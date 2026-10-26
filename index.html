@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAJ SELF DRIVE CARS - JAIPUR | Self Drive Car Rental</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0a1f3f',
+              blue: '#0d4e96',
+              light: '#2a75d3',
+              accent: '#f26a1b',
+              whatsapp: '#25D366'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            hindi: ['Noto Sans Devanagari', 'sans-serif'],
+            cursive: ['Caveat', 'cursive']
+          },
+          boxShadow: {
+            'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+            'glow': '0 0 20px rgba(13, 78, 150, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .hindi-text { font-family: 'Noto Sans Devanagari', sans-serif; }
+    .cursive-text { font-family: 'Caveat', cursive; }
+    
+    /* Hover Effects */
+    .hover-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .hover-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(13, 78, 150, 0.25);
+    }
+
+    .image-zoom-container { overflow: hidden; }
+    .image-zoom { transition: transform 0.6s ease; }
+    .hover-card:hover .image-zoom { transform: scale(1.08); }
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+    
+    /* Staggered delays */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    /* Pulsing Animation */
+    .pulse-btn-whatsapp { animation: pulse-whatsapp 2s infinite; }
+    @keyframes pulse-whatsapp {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    
+    .pulse-btn-call { animation: pulse-call 2.5s infinite; }
+    @keyframes pulse-call {
+      0% { box-shadow: 0 0 0 0 rgba(10, 31, 63, 0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(10, 31, 63, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(10, 31, 63, 0); }
+    }
+
+    /* Glassmorphism Navbar */
+    .glass-nav {
+      background-color: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+    }
+    
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #0d4e96, #2a75d3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <div id="setup-warning" class="hidden bg-amber-50 border-b border-amber-200 text-amber-900 text-sm px-4 py-3 text-center"></div>
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="bg-gradient-to-r from-brand-dark to-[#0f2d59] text-white text-xs sm:text-sm py-2 px-4 z-50 relative border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <div class="flex flex-wrap justify-center items-center gap-4 font-medium">
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand-accent animate-bounce"></i> Jaipur, Rajasthan</span>
+        <a href="#" data-business-phone-link class="flex items-center gap-1.5 hover:text-blue-300 transition-colors"><i class="fa-solid fa-phone text-blue-400"></i> अपना संपर्क नंबर जोड़ें</a>
+        <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-bold transition-colors"><i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Now</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3 text-slate-300 divide-x divide-slate-500/50">
+        <span class="pl-0 flex items-center gap-1"><i class="fa-solid fa-key text-brand-light text-xs"></i> Self Drive</span>
+        <span class="pl-3 flex items-center gap-1"><i class="fa-solid fa-gauge-high text-brand-light text-xs"></i> Unlimited Fun</span>
+        <span class="pl-3 text-white font-semibold flex items-center gap-1"><i class="fa-solid fa-headset text-brand-light text-xs"></i> 24x7 Support</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER / NAVIGATION ================= -->
+  <header id="main-header" class="bg-white sticky top-0 z-40 transition-all duration-300 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Logo Text -->
+      <a href="#" class="flex flex-col group">
+        <span class="font-extrabold text-xl sm:text-2xl text-brand-dark leading-tight group-hover:text-brand-blue transition-colors">RAJ SELF DRIVE CARS</span>
+        <span class="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-brand-blue uppercase">— JAIPUR —</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 font-semibold text-sm text-slate-600">
+        <a href="#home" class="text-brand-blue hover:scale-105 transition-transform">Home</a>
+        <a href="#how-it-works" class="hover:text-brand-blue hover:scale-105 transition-all">How it Works</a>
+        <a href="#vehicles" class="hover:text-brand-blue hover:scale-105 transition-all">Our Fleet</a>
+        <a href="#categories" class="hover:text-brand-blue hover:scale-105 transition-all">Categories</a>
+        <a href="#long-term" class="hover:text-brand-blue hover:scale-105 transition-all">Long Term Rental</a>
+        <a href="#reviews" class="hover:text-brand-blue hover:scale-105 transition-all">Reviews</a>
+      </nav>
+
+      <!-- Book Now Button -->
+      <div class="hidden sm:block">
+        <button onclick="openBookingModal()" class="bg-gradient-to-r from-brand-blue to-brand-light hover:from-brand-dark hover:to-brand-blue text-white px-6 py-2.5 rounded-full font-bold shadow-lg hover:shadow-glow transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2">
+          <i class="fa-solid fa-car-side"></i> Rent a Car
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="lg:hidden text-brand-dark text-2xl p-2 hover:bg-slate-100 rounded-lg transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-lg border-t border-slate-100 p-4 space-y-2 shadow-2xl absolute w-full rounded-b-2xl">
+      <a href="#home" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Home</a>
+      <a href="#how-it-works" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">How it Works</a>
+      <a href="#vehicles" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Our Fleet</a>
+      <a href="#categories" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Categories</a>
+      <a href="#long-term" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Long Term Rental</a>
+      <button onclick="openBookingModal()" class="w-full text-left font-bold text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors mt-2">Rent a Car Now</button>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="home" class="bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-slate-50 to-white py-16 md:py-24 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+      <div class="absolute -top-20 -right-20 bg-brand-light/10 w-96 h-96 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 -left-10 bg-brand-accent/5 w-72 h-72 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      
+      <!-- Text Content -->
+      <div class="reveal-left">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-100 shadow-sm text-brand-blue text-xs font-bold mb-6 hover:shadow-md transition-shadow">
+          <i class="fa-solid fa-key text-brand-accent"></i> Unlock Your Freedom
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-brand-dark leading-[1.1] mb-2 drop-shadow-sm">
+          PREMIUM SELF DRIVE
+          <span class="block text-2xl md:text-4xl text-gradient mt-2 uppercase tracking-wider font-extrabold">Cars in Jaipur</span>
+        </h1>
+        
+        <div class="relative inline-block my-5">
+          <p class="hindi-text text-2xl md:text-3xl font-extrabold text-slate-800 relative z-10 drop-shadow-sm">
+            खुद चलाएं, अपनी मर्जी से घूमें।
+          </p>
+          <div class="absolute bottom-1 left-0 w-full h-3 bg-brand-accent/20 -z-0 -rotate-1 rounded-full"></div>
+        </div>
+
+        <p class="text-lg font-bold text-slate-600 mb-8 border-l-4 border-brand-blue pl-4">Flexible Durations • Affordable Prices • 24/7 Rentals</p>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 text-sm font-semibold text-slate-700">
+          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-road text-brand-blue text-lg"></i> किलोमीटर की शर्तें लागू</li>
+          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-map-location text-brand-blue text-lg"></i> Airport/Railway Delivery</li>
+          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-ban text-brand-blue text-lg"></i> Zero Hidden Charges</li>
+          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-car-burst text-brand-blue text-lg"></i> Well Maintained Cars</li>
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-5">
+          <a href="#" data-business-phone-link class="flex items-center justify-center gap-3 bg-brand-dark hover:bg-slate-900 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 pulse-btn-call">
+            <div class="bg-white/10 p-2 rounded-lg"><i class="fa-solid fa-phone-volume text-xl"></i></div>
+            <div class="text-left">
+              <span class="block text-[10px] uppercase text-slate-400 tracking-wider">Call to Book</span>
+              <span class="block text-lg leading-tight">अपना संपर्क नंबर जोड़ें</span>
+            </div>
+          </a>
+          <button onclick="openBookingModal()" class="flex items-center justify-center gap-3 bg-gradient-to-r from-brand-blue to-brand-light hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+            <i class="fa-solid fa-calendar-check text-2xl"></i>
+            <div class="text-left">
+              <span class="block text-[10px] uppercase text-blue-100 tracking-wider">Quick Reservation</span>
+              <span class="block text-lg leading-tight">Book Online</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Images -->
+      <div class="relative reveal-right">
+        <div class="image-zoom-container rounded-3xl shadow-2xl border-4 border-white overflow-hidden bg-white">
+           <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Self Drive Car" class="w-full h-[400px] md:h-[500px] object-cover image-zoom hover:scale-105 transition-transform duration-700">
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute -bottom-8 -left-6 sm:-left-12 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 animate-bounce hover:animate-none transition-all duration-300" style="animation-duration: 3s;">
+          <div class="bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center text-brand-blue text-2xl shadow-sm">
+             <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="pr-2">
+            <p class="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider mb-1">Fully Insured</p>
+            <p class="text-sm font-black text-slate-800">Safe & Secure</p>
+          </div>
+        </div>
+
+        <div class="absolute top-10 right-4 sm:-right-8 bg-white/95 backdrop-blur px-5 py-3 rounded-2xl shadow-2xl border border-slate-100 rotate-3 hover:rotate-0 transition-transform duration-300">
+          <span class="cursive-text text-3xl text-gradient font-bold drop-shadow-sm">Drive Your Dream!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES GRID ================= -->
+  <section class="py-12 bg-white border-y border-slate-100 relative z-20 shadow-soft">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+      <div class="reveal delay-100 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
+        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
+            <i class="fa-solid fa-car-burst text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
+        </div>
+        <h3 class="font-bold text-sm text-slate-800">Well Maintained</h3>
+      </div>
+      <div class="reveal delay-200 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
+        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
+            <i class="fa-solid fa-plane-arrival text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
+        </div>
+        <h3 class="font-bold text-sm text-slate-800">Airport Delivery</h3>
+      </div>
+      <div class="reveal delay-300 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
+        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
+            <i class="fa-solid fa-clock-rotate-left text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
+        </div>
+        <h3 class="font-bold text-sm text-slate-800">Flexible Rent</h3>
+      </div>
+      <div class="reveal delay-400 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
+        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
+            <i class="fa-solid fa-comment-dollar text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
+        </div>
+        <h3 class="font-bold text-sm text-slate-800">Zero Hidden Charges</h3>
+      </div>
+      <div class="reveal delay-500 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
+        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
+            <i class="fa-solid fa-headset text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
+        </div>
+        <h3 class="font-bold text-sm text-slate-800">24/7 Roadside Help</h3>
+      </div>
+      <div class="reveal delay-500 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
+        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
+            <i class="fa-solid fa-user-secret text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
+        </div>
+        <h3 class="font-bold text-sm text-slate-800">Privacy & Freedom</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OUR VEHICLES (DATABASE-DRIVEN) ================= -->
+  <section id="vehicles" class="py-24 bg-slate-50 relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16 reveal">
+        <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em] mb-3">Self Drive Fleet</h4>
+        <h2 class="text-4xl font-black text-brand-dark">CHOOSE YOUR RIDE</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
+        <p class="text-slate-500 font-medium mt-6 text-lg">Hatchbacks | Premium SUVs | Off-Roaders</p>
+        <p id="fleet-status" class="text-sm text-amber-700 mt-4" role="status"></p>
+      </div>
+      <div id="vehicles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="md:col-span-3 bg-white rounded-2xl p-8 text-center text-slate-500">गाड़ियों की जानकारी लोड हो रही है…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POPULAR CATEGORIES / HOW IT WORKS ================= -->
+  <section id="categories" class="py-24 bg-white relative overflow-hidden border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 relative z-10 pt-10">
+      
+      <div class="text-center mb-16 reveal-scale">
+        <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em] mb-3">Find Your Perfect Match</h4>
+        <h2 class="text-4xl font-black text-brand-dark">POPULAR CATEGORIES</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <!-- Category 1 -->
+        <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover-card border border-slate-200 group reveal delay-100">
+          <div class="image-zoom-container h-48 relative">
+             <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" alt="Economy Cars" class="w-full h-full object-cover image-zoom">
+             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent flex items-end p-6">
+                 <h3 class="font-black text-2xl text-white">Economy Hatchbacks</h3>
+             </div>
+          </div>
+          <div class="p-6">
+            <p class="text-sm text-slate-600 mb-4 leading-relaxed">Perfect for city driving, narrow streets, and budget-friendly road trips. High mileage and easy parking.</p>
+            <ul class="text-xs font-bold text-slate-500 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Maruti Swift, Baleno</li>
+                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Hyundai i20, Grand i10</li>
+            </ul>
+            <button onclick="openBookingModal('Hatchback')" class="text-brand-blue font-bold text-sm hover:text-brand-dark transition-colors">View All Hatchbacks <i class="fa-solid fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+        
+        <!-- Category 2 -->
+        <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover-card border border-slate-200 group reveal delay-200">
+          <div class="image-zoom-container h-48 relative">
+             <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80" alt="Family SUVs" class="w-full h-full object-cover image-zoom">
+             <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 to-transparent flex items-end p-6">
+                 <h3 class="font-black text-2xl text-white">Premium Family SUVs</h3>
+             </div>
+          </div>
+          <div class="p-6">
+            <p class="text-sm text-slate-600 mb-4 leading-relaxed">Spacious, comfortable, and packed with features. The best choice for long highway drives with family and luggage.</p>
+            <ul class="text-xs font-bold text-slate-500 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Hyundai Creta, Kia Seltos</li>
+                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Toyota Innova Crysta</li>
+            </ul>
+            <button onclick="openBookingModal('SUV')" class="text-brand-blue font-bold text-sm hover:text-brand-dark transition-colors">View All SUVs <i class="fa-solid fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+        
+        <!-- Category 3 -->
+        <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover-card border border-slate-200 group reveal delay-300">
+          <div class="image-zoom-container h-48 relative">
+             <img src="https://images.unsplash.com/photo-1632731872583-05b63b2f565e?auto=format&fit=crop&w=600&q=80" alt="Off-Road" class="w-full h-full object-cover image-zoom">
+             <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/90 to-transparent flex items-end p-6">
+                 <h3 class="font-black text-2xl text-white">Adventure & Off-Road</h3>
+             </div>
+          </div>
+          <div class="p-6">
+            <p class="text-sm text-slate-600 mb-4 leading-relaxed">For the thrill-seekers and adventurers. Tackle rough terrains and experience raw power with our 4x4 options.</p>
+            <ul class="text-xs font-bold text-slate-500 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Mahindra Thar 4x4</li>
+                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Toyota Fortuner</li>
+            </ul>
+            <button onclick="openBookingModal('Off-Road')" class="text-brand-blue font-bold text-sm hover:text-brand-dark transition-colors">View All 4x4 <i class="fa-solid fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it Works section -->
+      <div id="how-it-works" class="bg-brand-dark rounded-3xl p-10 md:p-16 text-white relative overflow-hidden reveal">
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-brand-blue rounded-full blur-3xl opacity-50"></div>
+        <div class="text-center mb-12 relative z-10">
+            <h2 class="text-3xl font-black mb-2">How It Works</h2>
+            <p class="text-blue-200">Rent a self-drive car in 3 simple steps</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 text-center">
+            <div>
+                <div class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center text-3xl mb-4 border border-white/20 text-brand-accent"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3 class="font-bold text-xl mb-2">1. Book Your Car</h3>
+                <p class="text-sm text-blue-100">Select your preferred car, dates, and pickup location online or via WhatsApp.</p>
+            </div>
+            <div class="hidden md:block absolute top-10 left-[25%] right-[25%] h-0.5 bg-white/20 z-0"></div> <!-- Connector Line -->
+            <div>
+                <div class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center text-3xl mb-4 border border-white/20 text-brand-accent"><i class="fa-solid fa-id-card"></i></div>
+                <h3 class="font-bold text-xl mb-2">2. Upload Documents</h3>
+                <p class="text-sm text-blue-100">Provide your valid Driving License and Aadhar Card for quick verification.</p>
+            </div>
+            <div>
+                <div class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center text-3xl mb-4 border border-white/20 text-brand-accent"><i class="fa-solid fa-key"></i></div>
+                <h3 class="font-bold text-xl mb-2">3. Get Keys & Drive</h3>
+                <p class="text-sm text-blue-100">Pick up from our hub or get doorstep delivery. Enjoy your freedom!</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LONG TERM / CORPORATE FORM ================= -->
+  <section id="long-term" class="py-24 bg-slate-50 relative overflow-hidden">
+    <!-- Background overlay patterns -->
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div class="text-slate-800 reveal-left">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-[2px] bg-brand-accent"></div>
+          <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em]">Monthly & Corporate Tie-ups</h4>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black mb-6 leading-tight text-brand-dark">LONG TERM <br/> RENTALS</h2>
+        <p class="text-xl text-slate-600 mb-8 font-medium leading-relaxed border-l-4 border-brand-accent pl-4">Need a car for a month or longer? Get heavy discounts and hassle-free maintenance with our long-term self-drive plans.</p>
+        
+        <ul class="space-y-5 mb-10">
+          <li class="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue"><i class="fa-solid fa-tags"></i></div>
+            <span class="font-bold text-lg">Up to 40% Off on Monthly Plans</span>
+          </li>
+          <li class="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <span class="font-bold text-lg">Free Routine Maintenance</span>
+          </li>
+          <li class="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue"><i class="fa-solid fa-building"></i></div>
+            <span class="font-bold text-lg">Corporate Employee Benefits</span>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Quote Form -->
+      <div class="reveal-right">
+        <div class="bg-white text-slate-800 p-8 sm:p-10 rounded-3xl shadow-2xl relative border border-slate-100">
+          <div class="absolute -top-5 -right-5 w-20 h-20 bg-brand-accent rounded-full -z-10 blur-xl opacity-20"></div>
+          <div class="absolute -bottom-5 -left-5 w-20 h-20 bg-brand-blue rounded-full -z-10 blur-xl opacity-20"></div>
+          
+          <h3 class="text-2xl font-black text-center mb-2 text-brand-dark">Quick Enquiry Form</h3>
+          <p class="text-center text-slate-500 text-sm mb-8 font-medium">Fill details below for long-term rental or corporate quotes.</p>
+          
+          <form id="enquiry-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Name / Company</label>
+                <input name="name_or_company" type="text" autocomplete="name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium" required>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+                <input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+()\s-]{10,18}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium" required>
+              </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Duration Required</label>
+                <select name="duration" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-600" required>
+                    <option value="15 Days">15 Days</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="3 Months">3 Months</option>
+                    <option value="6+ Months">6+ Months</option>
+                </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Requirement Details (Which Car?)</label>
+              <textarea name="details" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium h-24 resize-none" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-brand-blue to-brand-dark text-white font-black text-lg py-4 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+              Submit Request <i class="fa-solid fa-paper-plane ml-2"></i>
+            </button>
+            <div id="success-msg" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl" role="status">
+              <h4 class="font-bold text-sm">पूछताछ सेव हो गई</h4>
+              <p id="enquiry-status-text" class="text-xs mt-1"></p>
+              <a id="enquiry-whatsapp-link" class="hidden mt-3 inline-flex bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold" target="_blank" rel="noopener">WhatsApp पर संदेश खोलें</a>
+            </div>
+            <div id="enquiry-error" class="hidden mt-4 text-sm text-red-700" role="alert"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section id="reviews" class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-16 reveal-scale">
+        <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em] mb-3">Client Reviews</h4>
+        <h2 class="text-4xl font-black text-brand-dark">What Our Renters Say</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative reveal delay-100 hover-card">
+          <i class="fa-solid fa-quote-right absolute top-6 right-8 text-slate-200 text-4xl"></i>
+          <div class="flex gap-1 text-yellow-400 mb-6 text-lg"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-base font-medium text-slate-600 mb-8 leading-relaxed relative z-10">"Booked an i20 for a quick weekend trip. The self-drive process was super smooth, no hidden paperwork. The car was clean and drove perfectly."</p>
+          <div class="flex items-center gap-4 border-t border-slate-200 pt-6">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue font-black text-xl">A</div>
+            <div>
+                <h4 class="font-bold text-brand-dark">Amit Sharma</h4>
+                <p class="text-xs font-bold text-slate-400">Jaipur, Weekend Renter</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-brand-dark text-white p-8 rounded-3xl relative reveal delay-200 hover-card shadow-xl transform md:-translate-y-4">
+          <i class="fa-solid fa-quote-right absolute top-6 right-8 text-white/10 text-4xl"></i>
+          <div class="flex gap-1 text-yellow-400 mb-6 text-lg"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-base font-medium text-blue-100 mb-8 leading-relaxed relative z-10">"Took the Mahindra Thar for a desert road trip near Jaisalmer. Absolute beast! Their deposit refund policy is very fast. Highly recommended for self-drive enthusiasts."</p>
+          <div class="flex items-center gap-4 border-t border-white/20 pt-6">
+            <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white font-black text-xl">N</div>
+            <div>
+                <h4 class="font-bold text-white">Neha Gupta</h4>
+                <p class="text-xs font-bold text-blue-300">Delhi, Tourist</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative reveal delay-300 hover-card">
+          <i class="fa-solid fa-quote-right absolute top-6 right-8 text-slate-200 text-4xl"></i>
+          <div class="flex gap-1 text-yellow-400 mb-6 text-lg"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-base font-medium text-slate-600 mb-8 leading-relaxed relative z-10">"We rent cars for our outstation sales team every month. They always deliver on time at the airport. Very professional and reliable self-drive fleet."</p>
+          <div class="flex items-center gap-4 border-t border-slate-200 pt-6">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue font-black text-xl">R</div>
+            <div>
+                <h4 class="font-bold text-brand-dark">Rahul Verma</h4>
+                <p class="text-xs font-bold text-slate-400">Corporate Manager</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="contact" class="bg-[#051021] text-white pt-20 pb-10 border-t-4 border-brand-blue relative">
+    <!-- Decorative Map Icon Background -->
+    <i class="fa-solid fa-car-side text-[#0a1b35] text-[20rem] absolute top-10 right-10 z-0 opacity-50 pointer-events-none"></i>
+    
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 relative z-10">
+      <div class="lg:col-span-2 pr-0 lg:pr-10">
+        <h3 class="text-2xl font-black mb-2 text-white">RAJ SELF DRIVE CARS</h3>
+        <span class="text-xs font-bold tracking-[0.25em] text-brand-light uppercase block mb-6">— JAIPUR —</span>
+        <p class="text-slate-400 text-sm mb-8 leading-relaxed font-medium">Your trusted partner for self-drive car rentals in Jaipur. We offer premium, well-maintained hatchbacks, SUVs, and 4x4s with zero hidden charges. Drive your own journey.</p>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue hover:-translate-y-1 transition-all"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white border-b border-white/10 pb-3 inline-block">Quick Links</h3>
+        <ul class="space-y-3 text-slate-400 text-sm font-medium">
+          <li><a href="#home" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Home</a></li>
+          <li><a href="#how-it-works" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> How it Works</a></li>
+          <li><a href="#vehicles" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Our Fleet</a></li>
+          <li><a href="#categories" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Categories</a></li>
+          <li><a href="#long-term" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Long Term Rentals</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white border-b border-white/10 pb-3 inline-block">Contact Info</h3>
+        <ul class="space-y-4 text-slate-400 text-sm font-medium">
+          <li class="flex items-start gap-3 bg-white/5 p-3 rounded-xl border border-white/5">
+              <i class="fa-solid fa-location-dot mt-1 text-brand-light text-lg"></i> 
+              <span>Jaipur, Rajasthan, India<br/><span class="text-xs mt-1 block">Pickup Hub & Delivery available</span></span>
+          </li>
+          <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-brand-light bg-white/5 p-2 rounded-lg"></i> 
+              <a href="#" data-business-phone-link class="hover:text-white font-bold text-base transition-colors">अपना संपर्क नंबर जोड़ें</a>
+          </li>
+          <li class="flex items-center gap-3">
+              <i class="fa-brands fa-whatsapp text-emerald-400 bg-white/5 p-2 rounded-lg"></i> 
+              <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="hover:text-white font-bold text-base transition-colors">अपना संपर्क नंबर जोड़ें</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs font-medium relative z-10">
+      <p>&copy; 2026 Raj Self Drive Cars - Jaipur. All rights reserved.</p>
+      <div class="flex gap-4">
+          <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+          <span class="w-1 h-1 bg-slate-700 rounded-full mt-1.5"></span>
+          <a href="#" class="hover:text-slate-300">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="fixed bottom-6 right-6 bg-brand-whatsapp text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform z-50 pulse-btn-whatsapp group">
+    <i class="fa-brands fa-whatsapp group-hover:rotate-12 transition-transform"></i>
+  </a>
+
+  <!-- Booking Modal for Self Drive (Glassmorphism) -->
+  <div id="booking-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 bg-brand-dark/50 backdrop-blur-sm p-4">
+    <div id="booking-modal-content" class="bg-white/90 backdrop-blur-xl border border-white p-6 sm:p-8 rounded-3xl shadow-2xl max-w-lg w-full transform scale-95 transition-transform duration-300 max-h-[95vh] overflow-y-auto relative">
+      
+      <!-- Close Button -->
+      <button onclick="closeBookingModal()" class="absolute top-4 right-4 w-10 h-10 bg-slate-100 hover:bg-red-100 hover:text-red-500 text-slate-500 rounded-full flex items-center justify-center transition-colors shadow-sm">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <h3 class="text-2xl font-black text-brand-dark mb-1">Book Self Drive Car</h3>
+      <p class="text-sm text-slate-500 mb-6 font-medium">तारीखें और गाड़ी चुनें। हम उपलब्धता की पुष्टि करेंगे।</p>
+
+      <form id="booking-form" class="space-y-4" onsubmit="handleBookingSubmit(event)">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Full Name</label>
+            <input name="full_name" type="text" autocomplete="name" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium shadow-inner" required>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Phone Number</label>
+            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+()\s-]{10,18}" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium shadow-inner" required>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Select Vehicle</label>
+          <select id="vehicle-select" name="vehicle_selection" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-700 shadow-inner" required>
+            <option value="" disabled selected>Choose a vehicle</option>
+            <option value="category:Hatchback">Any Hatchback</option>
+            <option value="category:SUV">Any SUV</option>
+            <option value="category:Off-Road">Any Off-Road/4x4</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Pickup Date & Time</label>
+            <input name="pickup_at" type="datetime-local" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-600 shadow-inner" required>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Drop Date & Time</label>
+            <input name="dropoff_at" type="datetime-local" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-600 shadow-inner" required>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Delivery Preference</label>
+          <select name="delivery_preference" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-700 shadow-inner" required>
+            <option value="Pickup from our Hub">Pickup from our Hub</option>
+            <option value="Doorstep / Airport Delivery">Doorstep / Airport Delivery</option>
+          </select>
+        </div>
+        <button type="submit" id="booking-submit-btn" class="w-full mt-2 bg-gradient-to-r from-brand-blue to-brand-dark text-white font-black text-lg py-3.5 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 flex justify-center items-center gap-2">
+          Booking Request भेजें <i class="fa-solid fa-key"></i>
+        </button>
+        <div id="booking-success-msg" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl" role="status">
+          <h4 class="font-bold">बुकिंग अनुरोध सेव हो गया</h4>
+          <p id="booking-status-text" class="text-xs mt-1"></p>
+          <a id="booking-whatsapp-link" class="hidden mt-3 inline-flex bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold" target="_blank" rel="noopener">WhatsApp पर संदेश खोलें</a>
+        </div>
+        <div id="booking-error" class="hidden mt-4 text-sm text-red-700" role="alert"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- JavaScript for Interactions -->
+  <script>
+    // Booking Modal Logic
+    const bookingOverlay = document.getElementById('booking-modal-overlay');
+    const bookingContent = document.getElementById('booking-modal-content');
+    const vehicleSelect = document.getElementById('vehicle-select');
+
+    function openBookingModal(vehicleName = '') {
+      // Setup default selection if passed from a specific car card
+      if (vehicleName) {
+        for (let i = 0; i < vehicleSelect.options.length; i++) {
+          if (vehicleSelect.options[i].value.includes(vehicleName)) {
+            vehicleSelect.selectedIndex = i;
+            break;
+          }
+        }
+      } else {
+        vehicleSelect.selectedIndex = 0; // Reset if opened from navbar
+      }
+      
+      // Show modal with animation
+      bookingOverlay.classList.remove('hidden');
+      setTimeout(() => {
+        bookingOverlay.classList.remove('opacity-0');
+        bookingContent.classList.remove('scale-95');
+        bookingContent.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeBookingModal() {
+      // Hide modal with animation
+      bookingOverlay.classList.add('opacity-0');
+      bookingContent.classList.remove('scale-100');
+      bookingContent.classList.add('scale-95');
+      
+      setTimeout(() => {
+        bookingOverlay.classList.add('hidden');
+        document.getElementById('booking-form').reset();
+        document.getElementById('booking-success-msg').classList.add('hidden');
+        document.getElementById('booking-submit-btn').style.display = 'flex';
+      }, 300);
+    }
+
+    bookingOverlay.addEventListener('click', (e) => {
+      if (e.target === bookingOverlay) {
+        closeBookingModal();
+      }
+    });
+
+    async function handleBookingSubmit(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const btn = document.getElementById('booking-submit-btn');
+      const err = document.getElementById('booking-error');
+      const success = document.getElementById('booking-success-msg');
+      const status = document.getElementById('booking-status-text');
+      const waLink = document.getElementById('booking-whatsapp-link');
+      err.classList.add('hidden'); success.classList.add('hidden'); waLink.classList.add('hidden');
+      if (!db) { err.textContent = 'अभी Supabase सेटअप पूरा नहीं है। config.js में प्रोजेक्ट URL और Publishable Key भरें, फिर SQL सेटअप करें।'; err.classList.remove('hidden'); return; }
+
+      // Open a tab immediately within the user click; browser popup blockers may otherwise stop WhatsApp.
+      const waTab = window.open('about:blank', '_blank');
+      const original = btn.innerHTML; btn.disabled = true; btn.innerHTML = 'सेव हो रहा है…';
+      try {
+        const data = new FormData(form);
+        const pickupRaw = String(data.get('pickup_at') || '');
+        const dropRaw = String(data.get('dropoff_at') || '');
+        const pickupDate = new Date(pickupRaw);
+        const dropDate = new Date(dropRaw);
+        if (!pickupRaw || !dropRaw || Number.isNaN(pickupDate.getTime()) || Number.isNaN(dropDate.getTime()) || dropDate <= pickupDate) {
+          throw new Error('वापसी की तारीख/समय, पिकअप के बाद होना चाहिए।');
+        }
+        const selected = String(data.get('vehicle_selection') || '');
+        const option = form.elements.vehicle_selection.selectedOptions[0];
+        const vehicleName = option ? option.textContent.trim() : 'गाड़ी चयनित नहीं';
+        const maybeVehicleId = selected.startsWith('car:') ? selected.slice(4) : null;
+        const vehicleId = maybeVehicleId && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(maybeVehicleId) ? maybeVehicleId : null;
+        const payload = {
+          full_name: String(data.get('full_name') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          vehicle_id: vehicleId,
+          vehicle_name: vehicleName,
+          pickup_at: pickupDate.toISOString(),
+          dropoff_at: dropDate.toISOString(),
+          delivery_preference: String(data.get('delivery_preference') || '')
+        };
+        const { error } = await db.from('bookings').insert(payload);
+        if (error) throw error;
+        const message = [
+          'नमस्ते Raj Self Drive Cars, मुझे कार बुकिंग करवानी है।', '',
+          'नाम: ' + payload.full_name,
+          'मोबाइल: ' + payload.phone,
+          'गाड़ी: ' + vehicleName,
+          'पिकअप: ' + formatDateForMessage(pickupRaw),
+          'वापसी: ' + formatDateForMessage(dropRaw),
+          'डिलीवरी: ' + payload.delivery_preference,
+          '', 'कृपया उपलब्धता और अंतिम किराये की पुष्टि करें।'
+        ].join('\n');
+        const waUrl = createWhatsAppUrl(message);
+        success.classList.remove('hidden');
+        if (waUrl) {
+          status.textContent = 'जानकारी सेव हो गई है। WhatsApp संदेश तैयार है—संदेश भेजने के लिए WhatsApp में Send दबाएँ। यह अभी बुकिंग अनुरोध है, पुष्टि नहीं।';
+          waLink.href = waUrl; waLink.classList.remove('hidden');
+          if (waTab) { waTab.location.href = waUrl; } else { /* user can click visible fallback link */ }
+        } else {
+          status.textContent = 'जानकारी डेटाबेस में सेव हो गई है, लेकिन WhatsApp नंबर config.js में भरना बाकी है। नंबर जोड़ने के बाद ग्राहक संदेश खोल सकेगा।';
+          if (waTab) waTab.close();
+        }
+        form.reset();
+      } catch (e) {
+        if (waTab) waTab.close();
+        err.textContent = 'बुकिंग सेव नहीं हो सकी: ' + friendlyError(e);
+        err.classList.remove('hidden');
+      } finally { btn.disabled = false; btn.innerHTML = original; }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Scroll Reveal Animation Logic
+      const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px" 
+      });
+
+      reveals.forEach(reveal => {
+        revealObserver.observe(reveal);
+      });
+
+      // Sticky Glassmorphism Navbar Logic
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          header.classList.add('glass-nav');
+          header.classList.remove('bg-white');
+          header.classList.add('py-2');
+          header.classList.remove('py-3');
+        } else {
+          header.classList.remove('glass-nav');
+          header.classList.add('bg-white');
+          header.classList.add('py-3');
+          header.classList.remove('py-2');
+        }
+      });
+      
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const success = document.getElementById('success-msg');
+      const err = document.getElementById('enquiry-error');
+      const status = document.getElementById('enquiry-status-text');
+      const waLink = document.getElementById('enquiry-whatsapp-link');
+      success.classList.add('hidden'); err.classList.add('hidden'); waLink.classList.add('hidden');
+      if (!db) { err.textContent = 'अभी Supabase सेटअप पूरा नहीं है। config.js और SQL सेटअप पूरा करें।'; err.classList.remove('hidden'); return; }
+      const waTab = window.open('about:blank', '_blank');
+      const original = submitBtn.innerHTML; submitBtn.disabled = true; submitBtn.innerHTML = 'जानकारी सेव हो रही है…';
+      try {
+        const data = new FormData(form);
+        const payload = {
+          name_or_company: String(data.get('name_or_company') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          duration: String(data.get('duration') || ''),
+          details: String(data.get('details') || '').trim()
+        };
+        const { error } = await db.from('enquiries').insert(payload);
+        if (error) throw error;
+        const message = [
+          'नमस्ते Raj Self Drive Cars, मुझे Long Term Rental की जानकारी चाहिए।', '',
+          'नाम/कंपनी: ' + payload.name_or_company,
+          'मोबाइल: ' + payload.phone,
+          'अवधि: ' + payload.duration,
+          'जरूरत: ' + payload.details,
+          '', 'कृपया किराया और उपलब्धता बताएं।'
+        ].join('\n');
+        const waUrl = createWhatsAppUrl(message);
+        success.classList.remove('hidden');
+        if (waUrl) {
+          status.textContent = 'पूछताछ सेव हो गई है। WhatsApp में तैयार संदेश भेजने के लिए Send दबाएँ।';
+          waLink.href = waUrl; waLink.classList.remove('hidden');
+          if (waTab) waTab.location.href = waUrl;
+        } else {
+          status.textContent = 'पूछताछ सेव हो गई है। config.js में बिजनेस WhatsApp नंबर भरना बाकी है।';
+          if (waTab) waTab.close();
+        }
+        form.reset();
+      } catch (e) {
+        if (waTab) waTab.close();
+        err.textContent = 'पूछताछ सेव नहीं हो सकी: ' + friendlyError(e);
+        err.classList.remove('hidden');
+      } finally { submitBtn.disabled = false; submitBtn.innerHTML = original; }
+    }
+
+    function friendlyError(error) {
+      const msg = error && error.message ? error.message : String(error || 'अज्ञात त्रुटि');
+      if (/Failed to fetch|NetworkError/i.test(msg)) return 'इंटरनेट या Supabase URL जाँचें।';
+      if (/row-level security|permission denied|not allowed/i.test(msg)) return 'Supabase की SQL/RLS सेटिंग जाँचें।';
+      return msg;
+    }
+
+    function formatDateForMessage(raw) {
+      if (!raw) return '';
+      const d = new Date(raw);
+      if (Number.isNaN(d.getTime())) return raw;
+      return d.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+    }
+
+    function createWhatsAppUrl(message) {
+      const number = String(RAJ_CONFIG.BUSINESS_WHATSAPP_NUMBER || '').replace(/\D/g, '');
+      if (number.length < 10 || number.length > 15 || number.includes('XXXXXXXXXX')) return '';
+      return 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
+    }
+
+    function formatPhoneForDisplay(raw) {
+      const digits = String(raw || '').replace(/\D/g, '');
+      if (digits.length === 12 && digits.startsWith('91')) return '+91 ' + digits.slice(2, 7) + ' ' + digits.slice(7);
+      return raw || '';
+    }
+
+    function configureContactLinks() {
+      const phone = String(RAJ_CONFIG.BUSINESS_PHONE || RAJ_CONFIG.BUSINESS_WHATSAPP_NUMBER || '').replace(/[^0-9+]/g, '');
+      const displayPhone = formatPhoneForDisplay(phone);
+      document.querySelectorAll('[data-business-phone-link]').forEach(a => {
+        if (phone) {
+          a.href = 'tel:' + phone;
+          a.querySelectorAll('span').forEach(span => { if (span.textContent.includes('अपना संपर्क नंबर जोड़ें')) span.textContent = displayPhone; });
+          a.childNodes.forEach(node => { if (node.nodeType === Node.TEXT_NODE && node.textContent.includes('अपना संपर्क नंबर जोड़ें')) node.textContent = node.textContent.replace('अपना संपर्क नंबर जोड़ें', displayPhone); });
+        } else {
+          a.href = '#contact';
+          a.addEventListener('click', e => { e.preventDefault(); alert('पहले config.js में BUSINESS_PHONE भरें।'); });
+        }
+      });
+      document.querySelectorAll('[data-business-whatsapp-link]').forEach(a => {
+        const url = createWhatsAppUrl('नमस्ते Raj Self Drive Cars, मुझे कार रेंटल की जानकारी चाहिए।');
+        if (url) {
+          a.href = url;
+          a.querySelectorAll('span').forEach(span => { if (span.textContent.includes('अपना संपर्क नंबर जोड़ें')) span.textContent = displayPhone; });
+          a.childNodes.forEach(node => { if (node.nodeType === Node.TEXT_NODE && node.textContent.includes('अपना संपर्क नंबर जोड़ें')) node.textContent = node.textContent.replace('अपना संपर्क नंबर जोड़ें', displayPhone); });
+        } else {
+          a.href = '#contact';
+          a.addEventListener('click', e => { e.preventDefault(); alert('पहले config.js में BUSINESS_WHATSAPP_NUMBER भरें।'); });
+        }
+      });
+    }
+
+    const RAJ_CONFIG = window.RAJ_CONFIG || {};
+    const supabaseConfigured = Boolean(window.supabase && RAJ_CONFIG.SUPABASE_URL &&
+      /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(RAJ_CONFIG.SUPABASE_URL) &&
+      RAJ_CONFIG.SUPABASE_PUBLISHABLE_KEY && !String(RAJ_CONFIG.SUPABASE_PUBLISHABLE_KEY).includes('PASTE_'));
+    const db = supabaseConfigured ? window.supabase.createClient(RAJ_CONFIG.SUPABASE_URL, RAJ_CONFIG.SUPABASE_PUBLISHABLE_KEY) : null;
+    let fleetCars = [];
+
+    const starterCars = [
+      { id: 'demo-i20', name: 'Hyundai i20', category: 'Premium Hatchback', description: 'शहर और वीकेंड ट्रिप के लिए आरामदायक हैचबैक।', seats: 5, transmission: 'Manual', luggage: '2 Bags', price_per_day: 1500, image_url: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80', is_available: true, display_order: 1 },
+      { id: 'demo-creta', name: 'Hyundai Creta', category: 'Family SUV', description: 'परिवार और लंबी यात्रा के लिए स्पेशियस SUV।', seats: 5, transmission: 'Auto/Manual', luggage: '3 Bags', price_per_day: 2500, image_url: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80', is_available: true, display_order: 2 },
+      { id: 'demo-thar', name: 'Mahindra Thar', category: 'Adventure Series', description: 'एडवेंचर और ऑफ-रोड पसंद करने वालों के लिए।', seats: 4, transmission: 'Auto/Manual', luggage: '4x4', price_per_day: 3500, image_url: 'https://images.unsplash.com/photo-1632731872583-05b63b2f565e?auto=format&fit=crop&w=800&q=80', is_available: true, display_order: 3 }
+    ];
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    }
+
+    function renderFleet(cars) {
+      const grid = document.getElementById('vehicles-grid');
+      const select = document.getElementById('vehicle-select');
+      if (!grid || !select) return;
+      if (!cars.length) {
+        grid.innerHTML = '<div class="md:col-span-3 bg-white rounded-2xl p-8 text-center text-slate-500">अभी कोई गाड़ी उपलब्ध नहीं है। कृपया बाद में देखें।</div>';
+        return;
+      }
+      grid.innerHTML = cars.map(car => `
+        <article class="bg-white rounded-3xl border border-slate-100 shadow-soft hover-card overflow-hidden group">
+          <div class="relative h-56 image-zoom-container bg-slate-100">
+            <img src="${escapeHtml(car.image_url || '')}" alt="${escapeHtml(car.name)}" loading="lazy" class="w-full h-full object-cover image-zoom" onerror="this.style.display='none'">
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-brand-blue shadow-sm">${escapeHtml(car.category || 'Self Drive')}</div>
+            ${car.is_available ? '' : '<div class="absolute inset-0 bg-slate-900/55 flex items-center justify-center"><span class="bg-white text-red-700 px-4 py-2 rounded-full font-bold">फिलहाल उपलब्ध नहीं</span></div>'}
+          </div>
+          <div class="p-8 relative">
+            <div class="absolute -top-6 left-8 bg-brand-dark text-white w-12 h-12 flex items-center justify-center rounded-xl shadow-lg border-4 border-white"><i class="fa-solid fa-car-side"></i></div>
+            <h3 class="text-2xl font-black text-brand-dark mb-1 mt-2">${escapeHtml(car.name)}</h3>
+            <p class="text-sm font-bold text-slate-500 mb-4">${escapeHtml(car.description || car.category || '')}</p>
+            <div class="flex items-center justify-between gap-2 text-xs sm:text-sm text-slate-600 mb-4 pb-4 border-b border-slate-100">
+              <div><i class="fa-solid fa-users text-slate-400 mr-1"></i>${escapeHtml(car.seats || '—')} Seats</div>
+              <div><i class="fa-solid fa-gears text-slate-400 mr-1"></i>${escapeHtml(car.transmission || '—')}</div>
+              <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i>${escapeHtml(car.luggage || '—')}</div>
+            </div>
+            <div class="mb-6"><span class="text-xs text-slate-400 uppercase font-bold tracking-wider">Starting from</span><div class="text-2xl font-black text-brand-accent">₹${Number(car.price_per_day || 0).toLocaleString('en-IN')} <span class="text-sm text-slate-500 font-medium">/ दिन</span></div></div>
+            <button ${car.is_available ? '' : 'disabled'} onclick="openBookingModalById('${escapeHtml(car.id)}')" class="w-full text-center ${car.is_available ? 'bg-slate-100 hover:bg-brand-blue text-brand-dark hover:text-white' : 'bg-slate-200 text-slate-500 cursor-not-allowed'} font-bold py-3.5 rounded-xl transition-all duration-300">${car.is_available ? 'बुकिंग पूछताछ करें' : 'उपलब्ध नहीं'}</button>
+          </div>
+        </article>`).join('');
+      const oldVal = select.value;
+      select.innerHTML = '<option value="" disabled>गाड़ी चुनें</option>' +
+        cars.map(car => `<option value="car:${escapeHtml(car.id)}" ${car.is_available ? '' : 'disabled'}>${escapeHtml(car.name)} — ₹${Number(car.price_per_day || 0).toLocaleString('en-IN')}/दिन${car.is_available ? '' : ' (उपलब्ध नहीं)'}</option>`).join('') +
+        '<option value="category:Hatchback">Any Hatchback</option><option value="category:SUV">Any SUV</option><option value="category:Off-Road">Any Off-Road/4x4</option>';
+      if ([...select.options].some(o => o.value === oldVal)) select.value = oldVal;
+    }
+
+    function openBookingModalById(carId) { openBookingModal('car:' + carId); }
+
+    // Replace the original modal selection logic with database-friendly values.
+    const originalOpenBookingModal = openBookingModal;
+    openBookingModal = function(vehicleName = '') {
+      const selector = document.getElementById('vehicle-select');
+      if (selector) {
+        if (vehicleName.startsWith('car:')) selector.value = vehicleName;
+        else if (vehicleName) {
+          const match = [...selector.options].find(o => o.textContent.includes(vehicleName) || o.value === 'category:' + vehicleName);
+          selector.value = match ? match.value : '';
+        } else selector.value = '';
+      }
+      bookingOverlay.classList.remove('hidden');
+      setTimeout(() => { bookingOverlay.classList.remove('opacity-0'); bookingContent.classList.remove('scale-95'); bookingContent.classList.add('scale-100'); }, 10);
+    };
+
+    async function initializeWebsite() {
+      configureContactLinks();
+      const warning = document.getElementById('setup-warning');
+      if (!db) {
+        warning.textContent = 'सेटअप बाकी है: config.js में Supabase URL, Publishable Key और बिजनेस WhatsApp नंबर भरें। अभी दिख रही गाड़ियाँ नमूना डेटा हैं; फॉर्म डेटा सेव नहीं होगा।';
+        warning.classList.remove('hidden');
+        fleetCars = starterCars; renderFleet(fleetCars);
+        return;
+      }
+      try {
+        const { data, error } = await db.from('cars').select('id,name,category,description,seats,transmission,luggage,price_per_day,image_url,is_available,display_order').order('display_order', { ascending: true });
+        if (error) throw error;
+        fleetCars = data || [];
+        renderFleet(fleetCars);
+        if (!fleetCars.length) warning.textContent = 'एडमिन पैनल में गाड़ियों का डेटा जोड़ें, तब वेबसाइट पर गाड़ियाँ दिखाई देंगी।';
+        else warning.classList.add('hidden');
+      } catch (e) {
+        warning.textContent = 'गाड़ियों का डेटाबेस लोड नहीं हुआ: ' + friendlyError(e) + ' — नमूना गाड़ियाँ दिखाई जा रही हैं।';
+        warning.classList.remove('hidden');
+        fleetCars = starterCars; renderFleet(fleetCars);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initializeWebsite);
+
+  </script>
+</body>
+</html>
