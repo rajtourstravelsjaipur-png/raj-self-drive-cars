@@ -5,7 +5,7 @@
   <title>RAJ SELF DRIVE CARS — एडमिन पैनल</title>
   <script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    :root{font-family:Inter,system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;color:#172033;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}header{background:#0a1f3f;color:#fff;padding:22px max(18px,calc((100% - 1150px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}h1{font-size:21px;margin:0}main{max-width:1150px;margin:28px auto;padding:0 16px}.panel{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 10px 30px #0b234009}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.wide{grid-column:1/-1}label{font-size:13px;font-weight:700;display:block;margin-bottom:5px}input,select,textarea{width:100%;border:1px solid #cbd5e1;padding:11px;border-radius:9px;font:inherit;background:#fff}textarea{min-height:85px}button,.btn{border:0;border-radius:9px;padding:11px 15px;background:#0d4e96;color:white;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#e8eef7;color:#173353}button.danger{background:#b91c1c}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.muted{color:#64748b;font-size:13px}.status{padding:11px 13px;border-radius:9px;margin:12px 0;background:#eff6ff;color:#1e40af}.error{background:#fef2f2;color:#991b1b}.hidden{display:none!important}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{background:#e8eef7;color:#173353}.tab.active{background:#0d4e96;color:white}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px;min-width:700px}th,td{text-align:left;border-bottom:1px solid #e2e8f0;padding:10px;vertical-align:top}th{background:#f8fafc}td select{min-width:130px;padding:7px}.carimg{width:80px;height:56px;object-fit:cover;border-radius:7px;background:#e2e8f0}.small{font-size:12px}.toplink{color:#dbeafe}.filehint{font-size:12px;color:#64748b}@media(max-width:650px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}header{padding:16px;align-items:flex-start;flex-direction:column}}
+    :root{font-family:Inter,system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;color:#172033;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}header{background:#0a1f3f;color:#fff;padding:22px max(18px,calc((100% - 1150px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}h1{font-size:21px;margin:0}main{max-width:1150px;margin:28px auto;padding:0 16px}.panel{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 10px 30px #0b234009}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.wide{grid-column:1/-1}label{font-size:13px;font-weight:700;display:block;margin-bottom:5px}input,select,textarea{width:100%;border:1px solid #cbd5e1;padding:11px;border-radius:9px;font:inherit;background:#fff}textarea{min-height:85px}button,.btn{border:0;border-radius:9px;padding:11px 15px;background:#0d4e96;color:white;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#e8eef7;color:#173353}button.danger{background:#b91c1c}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.muted{color:#64748b;font-size:13px}.status{padding:11px 13px;border-radius:9px;margin:12px 0;background:#eff6ff;color:#1e40af}.error{background:#fef2f2;color:#991b1b}.hidden{display:none!important}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{background:#e8eef7;color:#173353}.tab.active{background:#0d4e96;color:white}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px;min-width:700px}th,td{text-align:left;border-bottom:1px solid #e2e8f0;padding:10px;vertical-align:top}th{background:#f8fafc}td select{min-width:130px;padding:7px}.carimg{width:80px;height:56px;object-fit:cover;border-radius:7px;background:#e2e8f0}.small{font-size:12px}.toplink{color:#dbeafe}@media(max-width:650px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}header{padding:16px;align-items:flex-start;flex-direction:column}}
   </style>
 </head>
 <body>
@@ -13,7 +13,7 @@
 <main>
   <div id="message" class="status hidden" role="status"></div>
   <section id="login-panel" class="panel" style="max-width:500px;margin:35px auto">
-    <h2>एडमिन लॉगिन</h2><p class="muted">यहाँ केवल अधिकृत ईमेल से लॉगिन करें। यूज़र पहले Supabase Authentication में बनाएँ।</p>
+    <h2>एडमिन लॉगिन</h2><p class="muted">For password resets and new user registration, please contact the website developer.</p>
     <form id="login-form" class="grid">
       <div class="wide"><label for="login-email">ईमेल</label><input id="login-email" type="email" autocomplete="username" required></div>
       <div class="wide"><label for="login-password">पासवर्ड</label><input id="login-password" type="password" autocomplete="current-password" required></div>
@@ -34,7 +34,7 @@
         <div><label for="car-transmission">गियर</label><input id="car-transmission" value="Manual"></div>
         <div><label for="car-luggage">बैग / खास जानकारी</label><input id="car-luggage" placeholder="जैसे 2 Bags / 4x4"></div>
         <div class="wide"><label for="car-description">वेबसाइट पर दिखने वाला विवरण</label><textarea id="car-description"></textarea></div>
-        <div class="wide"><label for="car-image-file">गाड़ी की फोटो अपलोड करें (JPG/PNG/WebP, अधिकतम 5 MB)</label><input id="car-image-file" type="file" accept="image/jpeg,image/png,image/webp"><div class="filehint">अपलोड की गई फोटो Supabase Storage में जाएगी। चाहें तो नीचे सीधे इमेज URL भी डाल सकते हैं।</div></div>
+        <div class="wide"><label for="car-image-file">गाड़ी की फोटो अपलोड करें (JPG/PNG/WebP, अधिकतम 5 MB)</label><input id="car-image-file" type="file" accept="image/jpeg,image/png,image/webp"></div>
         <div class="wide"><label for="car-image-url">फोटो URL</label><input id="car-image-url" type="url" placeholder="https://..."></div>
         <div><label for="car-order">दिखाने का क्रम</label><input id="car-order" type="number" value="1"></div>
         <div><label for="car-available">उपलब्धता</label><select id="car-available"><option value="true">उपलब्ध</option><option value="false">अभी उपलब्ध नहीं</option></select></div>
@@ -50,13 +50,43 @@
 (() => {
   const C = window.RAJ_CONFIG || {};
   const ready = Boolean(window.supabase && C.SUPABASE_URL && /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(C.SUPABASE_URL) && C.SUPABASE_PUBLISHABLE_KEY && !String(C.SUPABASE_PUBLISHABLE_KEY).includes('PASTE_'));
-  const client = ready ? window.supabase.createClient(C.SUPABASE_URL,C.SUPABASE_PUBLISHABLE_KEY) : null;
+  const client = ready ? window.supabase.createClient(C.SUPABASE_URL,C.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}) : null;
   const $ = id => document.getElementById(id);
   let currentUser = null;
   function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function message(txt,isError=false){$('message').textContent=txt;$('message').classList.remove('hidden','error');if(isError)$('message').classList.add('error');window.scrollTo({top:0,behavior:'smooth'});}
   function friendly(e){const s=e?.message||String(e||'Error');if(/row-level security|permission denied|not allowed/i.test(s))return 'इस अकाउंट को एडमिन अनुमति नहीं है। SQL में एडमिन ईमेल और Auth ईमेल मिलाएँ।';return s;}
-  $('login-form').addEventListener('submit',async e=>{e.preventDefault();if(!client){message('पहले config.js में Supabase URL/Publishable Key भरें।',true);return;}try{const {data,error}=await client.auth.signInWithPassword({email:$('login-email').value.trim(),password:$('login-password').value});if(error)throw error;const {data:allowed,error:rpcError}=await client.rpc('is_site_admin');if(rpcError||allowed!==true){await client.auth.signOut();throw new Error('यह ईमेल एडमिन के रूप में allowlist नहीं है। supabase_setup.sql में YOUR_ADMIN_EMAIL@example.com बदलकर SQL दोबारा चलाएँ।');}currentUser=data.user;$('login-panel').classList.add('hidden');$('dashboard').classList.remove('hidden');$('signed-in-as').textContent='लॉगिन: '+currentUser.email;await refreshAll();message('लॉगिन सफल।');}catch(err){message(friendly(err),true);}});
+  async function showDashboardFor(user){
+    const {data:allowed,error:rpcError}=await client.rpc('is_site_admin');
+    if(rpcError||allowed!==true){await client.auth.signOut();throw new Error('यह ईमेल एडमिन के रूप में अनुमति सूची में नहीं है। एडमिन ईमेल की SQL सेटिंग जाँचें।');}
+    currentUser=user;
+    $('login-panel').classList.add('hidden');
+    $('dashboard').classList.remove('hidden');
+    $('signed-in-as').textContent='लॉगिन: '+currentUser.email;
+    await refreshAll();
+  }
+  $('login-form').addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(!client){message('पहले config.js में Supabase URL/Publishable Key भरें।',true);return;}
+    try{
+      const {data,error}=await client.auth.signInWithPassword({email:$('login-email').value.trim(),password:$('login-password').value});
+      if(error)throw error;
+      await showDashboardFor(data.user);
+      message('लॉगिन सफल।');
+    }catch(err){message(friendly(err),true);}
+  });
+  async function restoreAdminSession(){
+    if(!client)return;
+    try{
+      const {data,error}=await client.auth.getSession();
+      if(error)throw error;
+      if(data.session&&data.session.user){
+        await showDashboardFor(data.session.user);
+        message('आपका लॉगिन बहाल हो गया।');
+      }
+    }catch(err){message('सेशन वापस नहीं मिल पाया। जरूरत हो तो दोबारा लॉगिन करें। '+friendly(err),true);}
+  }
+  restoreAdminSession();
   $('logout-btn').addEventListener('click',async()=>{if(client)await client.auth.signOut();currentUser=null;$('dashboard').classList.add('hidden');$('login-panel').classList.remove('hidden');message('आप लॉग आउट हो गए।');});
   document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===btn));['cars-panel','bookings-panel','enquiries-panel'].forEach(id=>$(id).classList.toggle('hidden',id!==btn.dataset.tab));}));
   async function refreshAll(){await Promise.all([loadCars(),loadBookings(),loadEnquiries()]);}
