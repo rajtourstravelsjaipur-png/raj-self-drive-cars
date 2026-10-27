@@ -229,7 +229,7 @@
             <div class="bg-white/10 p-2 rounded-lg"><i class="fa-solid fa-phone-volume text-xl"></i></div>
             <div class="text-left">
               <span class="block text-[10px] uppercase text-slate-400 tracking-wider">Call to Book</span>
-              <span class="block text-lg leading-tight">अपना संपर्क नंबर जोड़ें</span>
+              <span class="block text-lg leading-tight">+91 95712 84521</span>
             </div>
           </a>
           <button onclick="openBookingModal()" class="flex items-center justify-center gap-3 bg-gradient-to-r from-brand-blue to-brand-light hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
@@ -586,11 +586,11 @@
           </li>
           <li class="flex items-center gap-3">
               <i class="fa-solid fa-phone text-brand-light bg-white/5 p-2 rounded-lg"></i> 
-              <a href="#" data-business-phone-link class="hover:text-white font-bold text-base transition-colors">अपना संपर्क नंबर जोड़ें</a>
+              <a href="#" data-business-phone-link class="hover:text-white font-bold text-base transition-colors">+91 95712 84521</a>
           </li>
           <li class="flex items-center gap-3">
               <i class="fa-brands fa-whatsapp text-emerald-400 bg-white/5 p-2 rounded-lg"></i> 
-              <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="hover:text-white font-bold text-base transition-colors">अपना संपर्क नंबर जोड़ें</a>
+              <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="hover:text-white font-bold text-base transition-colors">+91 95712 84521</a>
           </li>
         </ul>
       </div>
@@ -764,7 +764,7 @@
         const { error } = await db.from('bookings').insert(payload);
         if (error) throw error;
         const message = [
-          'नमस्ते Raj Tour & Travels, मुझे कार बुकिंग करवानी है।', '',
+          'नमस्ते Raj Tour & Travels, मुझे ट्रिप बुक करनी है।', '',
           'नाम: ' + payload.full_name,
           'मोबाइल: ' + payload.phone,
           'गाड़ी: ' + vehicleName,
@@ -852,7 +852,7 @@
         const { error } = await db.from('enquiries').insert(payload);
         if (error) throw error;
         const message = [
-          'नमस्ते Raj Tour & Travels, मुझे Corporate &amp; Group Travel की जानकारी चाहिए।', '',
+          'नमस्ते Raj Tour & Travels, मुझे कॉर्पोरेट / ग्रुप ट्रिप की जानकारी चाहिए।', '',
           'नाम/कंपनी: ' + payload.name_or_company,
           'मोबाइल: ' + payload.phone,
           'अवधि: ' + payload.duration,
@@ -917,7 +917,7 @@
         }
       });
       document.querySelectorAll('[data-business-whatsapp-link]').forEach(a => {
-        const url = createWhatsAppUrl('नमस्ते Raj Tour & Travels, मुझे कार रेंटल की जानकारी चाहिए।');
+        const url = createWhatsAppUrl('नमस्ते Raj Tour & Travels, मुझे टूर और ट्रैवल की जानकारी चाहिए।');
         if (url) {
           a.href = url;
           a.querySelectorAll('span').forEach(span => { if (span.textContent.includes('अपना संपर्क नंबर जोड़ें')) span.textContent = displayPhone; });
