@@ -957,7 +957,7 @@
       grid.innerHTML = cars.map(car => `
         <article class="bg-white rounded-3xl border border-slate-100 shadow-soft hover-card overflow-hidden group">
           <div class="relative h-56 image-zoom-container bg-slate-100">
-            <img src="${escapeHtml(car.image_url || '')}" alt="${escapeHtml(car.name)}" loading="lazy" class="w-full h-full object-cover image-zoom" onerror="this.style.display='none'">
+            <img src="${escapeHtml(car.image_url || '')}" alt="${escapeHtml(car.name)}" data-car-id="${escapeHtml(car.id)}" loading="lazy" class="w-full h-full object-cover image-zoom">
             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-brand-blue shadow-sm">${escapeHtml(car.category || 'Self Drive')}</div>
             ${car.is_available ? '' : '<div class="absolute inset-0 bg-slate-900/55 flex items-center justify-center"><span class="bg-white text-red-700 px-4 py-2 rounded-full font-bold">फिलहाल उपलब्ध नहीं</span></div>'}
           </div>
@@ -974,6 +974,19 @@
             <button ${car.is_available ? '' : 'disabled'} onclick="openBookingModalById('${escapeHtml(car.id)}')" class="w-full text-center ${car.is_available ? 'bg-slate-100 hover:bg-brand-blue text-brand-dark hover:text-white' : 'bg-slate-200 text-slate-500 cursor-not-allowed'} font-bold py-3.5 rounded-xl transition-all duration-300">${car.is_available ? 'बुकिंग पूछताछ करें' : 'उपलब्ध नहीं'}</button>
           </div>
         </article>`).join('');
+      // If an off-road/Thar image URL is broken, use the working Thar image as a fallback.
+      grid.querySelectorAll('img[data-car-id]').forEach(img => {
+        img.addEventListener('error', () => {
+          if (img.dataset.fallbackUsed === 'true') { img.style.display = 'none'; return; }
+          const car = cars.find(item => String(item.id) === img.dataset.carId);
+          if (car && /thar|off.?road|adventure/i.test(String(car.name || '') + ' ' + String(car.category || ''))) {
+            img.dataset.fallbackUsed = 'true';
+            img.src = 'https://images.unsplash.com/photo-1753806901556-3b7f216f0ca6?auto=format&fit=crop&w=800&q=80';
+          } else {
+            img.style.display = 'none';
+          }
+        });
+      });
       const oldVal = select.value;
       select.innerHTML = '<option value="" disabled>गाड़ी चुनें</option>' +
         cars.map(car => `<option value="car:${escapeHtml(car.id)}" ${car.is_available ? '' : 'disabled'}>${escapeHtml(car.name)} — ₹${Number(car.price_per_day || 0).toLocaleString('en-IN')}/दिन${car.is_available ? '' : ' (उपलब्ध नहीं)'}</option>`).join('') +
