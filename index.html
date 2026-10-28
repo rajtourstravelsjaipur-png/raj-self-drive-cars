@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome for Icons -->
@@ -124,494 +124,353 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    /* New Raj Tour & Travels reference-inspired design */
+    html { scroll-behavior: smooth; }
+    body { background: #f3f8fd; color: #153456; }
+    h1, h2, h3, .brand-heading { font-family: 'Barlow Condensed', 'Inter', sans-serif; }
+    .hero-banner {
+      position: relative;
+      isolation: isolate;
+      background-image: linear-gradient(90deg, rgba(244,249,255,.98) 0%, rgba(244,249,255,.94) 38%, rgba(244,249,255,.52) 60%, rgba(244,249,255,.06) 100%), url('https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg');
+      background-position: center 42%;
+      background-size: cover;
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: auto 0 0;
+      height: 22%;
+      background: linear-gradient(0deg, rgba(255,255,255,.55), transparent);
+    }
+    .hero-car-pair img {
+      width: clamp(135px, 18vw, 245px);
+      height: clamp(100px, 12vw, 156px);
+      object-fit: contain;
+      border-radius: 16px;
+      padding: 4px;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 16px 35px rgba(7,47,89,.16);
+    }
+    .section-heading { color: #0a3d73; font-family: 'Barlow Condensed', 'Inter', sans-serif; letter-spacing: .025em; }
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 62px;
+      height: 4px;
+      margin: 11px auto 0;
+      border-radius: 8px;
+      background: #f2b13c;
+    }
+    .service-tile { border-right: 1px solid #d4e2f0; }
+    .service-tile:last-child { border-right: 0; }
+    .fleet-card, .package-card, .gallery-card { transition: transform .28s ease, box-shadow .28s ease; }
+    .fleet-card:hover, .package-card:hover, .gallery-card:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(9,58,105,.14); }
+    .fleet-image { height: 178px; background: #f7fbff; }
+    .fleet-image img { width: 100%; height: 100%; object-fit: contain; padding: 8px; transition: transform .35s ease; }
+    .fleet-card:hover .fleet-image img { transform: scale(1.035); }
+    .package-image { height: 150px; overflow: hidden; background: #e2edf7; }
+    .package-image img, .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .package-card:hover .package-image img, .gallery-card:hover img { transform: scale(1.06); }
+    .corporate-banner {
+      background-image: linear-gradient(90deg, rgba(5,40,76,.95), rgba(6,60,111,.80)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=85');
+      background-position: center;
+      background-size: cover;
+    }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .85rem; }
+    .footer-links a { white-space: nowrap; }
+    #floating-whatsapp { z-index: 50; }
+    @media (max-width: 767px) {
+      .hero-banner {
+        background-image: linear-gradient(90deg, rgba(244,249,255,.96), rgba(244,249,255,.84)), url('https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg');
+        background-position: 62% center;
+      }
+      .hero-car-pair img { width: 44vw; height: 104px; }
+      .service-tile { border-right: 0; border-bottom: 1px solid #d4e2f0; padding-bottom: 14px; }
+      .service-tile:nth-last-child(-n+2) { border-bottom: 0; }
+      .footer-links { gap: .65rem; padding-right: 0; }
+    }
+
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
+
   <div id="setup-warning" class="hidden bg-amber-50 border-b border-amber-200 text-amber-900 text-sm px-4 py-3 text-center"></div>
 
-  <!-- ================= TOP BAR ================= -->
-  <div class="bg-gradient-to-r from-brand-dark to-[#0f2d59] text-white text-xs sm:text-sm py-2 px-4 z-50 relative border-b border-white/10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-      <div class="flex flex-wrap justify-center items-center gap-4 font-medium">
-        <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand-accent animate-bounce"></i> Jaipur, Rajasthan</span>
-        <a href="#" data-business-phone-link class="flex items-center gap-1.5 hover:text-blue-300 transition-colors"><i class="fa-solid fa-phone text-blue-400"></i> 9571284521</a>
-        <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-bold transition-colors"><i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Now</a>
+  <!-- Top contact strip -->
+  <div class="bg-gradient-to-r from-[#073668] via-[#0b559e] to-[#08427d] text-white text-xs sm:text-sm py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-x-5 gap-y-2">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber-300"></i> Jaipur, Rajasthan</span>
+        <a href="#" data-business-phone-link class="flex items-center gap-2 hover:text-amber-200"><i class="fa-solid fa-phone"></i> +91 95712 84521</a>
+        <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="flex items-center gap-2 text-emerald-200 hover:text-white font-semibold"><i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Now</a>
       </div>
-      <div class="hidden md:flex items-center gap-3 text-slate-300 divide-x divide-slate-500/50">
-        <span class="pl-0 flex items-center gap-1"><i class="fa-solid fa-route text-brand-light text-xs"></i> Tours &amp; Travels</span>
-        <span class="pl-3 flex items-center gap-1"><i class="fa-solid fa-gauge-high text-brand-light text-xs"></i> Unlimited Fun</span>
-        <span class="pl-3 text-white font-semibold flex items-center gap-1"><i class="fa-solid fa-headset text-brand-light text-xs"></i> 24x7 Support</span>
+      <div class="hidden md:flex items-center gap-3 text-blue-100">
+        <span>Safe Ride</span><span class="text-blue-300">|</span><span>Comfortable Journey</span><span class="text-blue-300">|</span><span>24x7 Support</span>
       </div>
     </div>
   </div>
 
-  <!-- ================= HEADER / NAVIGATION ================= -->
-  <header id="main-header" class="bg-white sticky top-0 z-40 transition-all duration-300 border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Logo Text -->
-      <a href="#" class="flex flex-col group">
-        <span class="font-extrabold text-xl sm:text-2xl text-brand-dark leading-tight group-hover:text-brand-blue transition-colors">RAJ TOUR &amp; TRAVELS</span>
-        <span class="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-brand-blue uppercase">— JAIPUR —</span>
+  <!-- Header -->
+  <header id="main-header" class="bg-white sticky top-0 z-40 border-b border-blue-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
+      <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="Raj Tour and Travels home">
+        <span class="w-14 h-12 sm:w-16 sm:h-14 rounded-xl bg-blue-50 text-[#0b559e] flex items-center justify-center text-3xl border border-blue-100"><i class="fa-solid fa-car-side"></i></span>
+        <span class="flex flex-col">
+          <strong class="brand-heading font-extrabold text-xl sm:text-2xl leading-none text-[#0a3d73]">RAJ TOUR AND TRAVELS</strong>
+          <span class="text-[10px] sm:text-xs font-bold text-[#0d5599] tracking-[.30em] text-center mt-1.5">— RAJASTHAN —</span>
+        </span>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center gap-7 font-semibold text-sm text-slate-600">
-        <a href="#home" class="text-brand-blue hover:scale-105 transition-transform">Home</a>
-        <a href="#how-it-works" class="hover:text-brand-blue hover:scale-105 transition-all">Our Services</a>
-        <a href="#vehicles" class="hover:text-brand-blue hover:scale-105 transition-all">Travel Fleet</a>
-        <a href="#categories" class="hover:text-brand-blue hover:scale-105 transition-all">Travel Services</a>
-        <a href="#long-term" class="hover:text-brand-blue hover:scale-105 transition-all">Corporate &amp; Group Travel</a>
-        <a href="#reviews" class="hover:text-brand-blue hover:scale-105 transition-all">Reviews</a>
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-bold text-slate-700">
+        <a href="#home" class="hover:text-blue-700 transition-colors">Home</a>
+        <a href="#about" class="hover:text-blue-700 transition-colors">About Us</a>
+        <a href="#vehicles" class="hover:text-blue-700 transition-colors">Our Vehicles</a>
+        <a href="#packages" class="hover:text-blue-700 transition-colors">Tour Packages</a>
+        <a href="#long-term" class="hover:text-blue-700 transition-colors">Corporate</a>
+        <a href="#gallery" class="hover:text-blue-700 transition-colors">Gallery</a>
+        <a href="#contact" class="hover:text-blue-700 transition-colors">Contact</a>
       </nav>
 
-      <!-- Book Now Button -->
       <div class="hidden sm:block">
-        <button onclick="openBookingModal()" class="bg-gradient-to-r from-brand-blue to-brand-light hover:from-brand-dark hover:to-brand-blue text-white px-6 py-2.5 rounded-full font-bold shadow-lg hover:shadow-glow transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2">
-          <i class="fa-solid fa-route"></i> Book a Trip
+        <button onclick="openBookingModal()" class="bg-gradient-to-r from-[#0a559f] to-[#0b70bc] hover:from-[#073668] hover:to-[#0a559f] text-white px-5 py-3 rounded-full font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+          <i class="fa-regular fa-calendar-check"></i> Book Now
         </button>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button class="lg:hidden text-brand-dark text-2xl p-2 hover:bg-slate-100 rounded-lg transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <button class="lg:hidden text-[#0a3d73] text-2xl p-2 rounded-lg hover:bg-blue-50" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
-
-    <!-- Mobile Nav -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-lg border-t border-slate-100 p-4 space-y-2 shadow-2xl absolute w-full rounded-b-2xl">
-      <a href="#home" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Home</a>
-      <a href="#how-it-works" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Our Services</a>
-      <a href="#vehicles" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Travel Fleet</a>
-      <a href="#categories" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Travel Services</a>
-      <a href="#long-term" class="block font-semibold text-slate-700 hover:text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors">Corporate &amp; Group Travel</a>
-      <button onclick="openBookingModal()" class="w-full text-left font-bold text-brand-blue hover:bg-blue-50 p-2 rounded-lg transition-colors mt-2">Book a Trip Now</button>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-blue-100 p-4 space-y-1 shadow-lg">
+      <a href="#home" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">Home</a>
+      <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">About Us</a>
+      <a href="#vehicles" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">Our Vehicles</a>
+      <a href="#packages" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">Tour Packages</a>
+      <a href="#long-term" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">Corporate</a>
+      <a href="#gallery" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">Gallery</a>
+      <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block p-2 rounded-lg hover:bg-blue-50 font-semibold">Contact</a>
+      <button onclick="openBookingModal(); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full text-left p-2 font-bold text-blue-800">Book Now</button>
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section id="home" class="bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-slate-50 to-white py-16 md:py-24 relative overflow-hidden">
-    <!-- Decorative Elements -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-      <div class="absolute -top-20 -right-20 bg-brand-light/10 w-96 h-96 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 -left-10 bg-brand-accent/5 w-72 h-72 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-      
-      <!-- Text Content -->
-      <div class="reveal-left">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-100 shadow-sm text-brand-blue text-xs font-bold mb-6 hover:shadow-md transition-shadow">
-          <i class="fa-solid fa-route text-brand-accent"></i> Explore Rajasthan With Us
+  <!-- Home hero -->
+  <section id="home" class="hero-banner overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20 min-h-[390px] lg:min-h-[430px] grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="relative z-10 reveal-left">
+        <div class="inline-flex items-center gap-2 text-[#0b559e] font-bold text-sm mb-4"><i class="fa-solid fa-shield-heart text-lg"></i> Welcome to</div>
+        <h1 class="brand-heading text-4xl sm:text-5xl lg:text-6xl font-black text-[#0a3768] leading-[.98] mb-3">RAJ TOUR AND TRAVELS <span class="block mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold">RAJASTHAN</span></h1>
+        <div class="w-48 h-1 bg-[#0b559e] rounded-full mb-5"></div>
+        <p class="hindi-text text-2xl sm:text-3xl font-extrabold text-[#0a3768] mb-4">आपकी यात्रा, हमारी जिम्मेदारी।</p>
+        <p class="text-base sm:text-lg font-bold text-slate-700 mb-4">Jaipur's Trusted Taxi &amp; Tour Service</p>
+        <div class="flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold text-slate-800 mb-7">
+          <span><i class="fa-regular fa-circle-check text-blue-700 mr-1"></i> Airport Pickup &amp; Drop</span>
+          <span><i class="fa-regular fa-circle-check text-blue-700 mr-1"></i> Outstation Taxi</span>
+          <span><i class="fa-regular fa-circle-check text-blue-700 mr-1"></i> Rajasthan Tour Packages</span>
+          <span><i class="fa-regular fa-circle-check text-blue-700 mr-1"></i> Corporate Travel</span>
+          <span><i class="fa-regular fa-circle-check text-blue-700 mr-1"></i> Religious Tour</span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-brand-dark leading-[1.1] mb-2 drop-shadow-sm">
-          TOURS &amp; TRAVELS
-          <span class="block text-2xl md:text-4xl text-gradient mt-2 uppercase tracking-wider font-extrabold">Travel Services in Jaipur</span>
-        </h1>
-        
-        <div class="relative inline-block my-5">
-          <p class="hindi-text text-2xl md:text-3xl font-extrabold text-slate-800 relative z-10 drop-shadow-sm">
-            आपकी यात्रा, हमारी जिम्मेदारी।
-          </p>
-          <div class="absolute bottom-1 left-0 w-full h-3 bg-brand-accent/20 -z-0 -rotate-1 rounded-full"></div>
-        </div>
-
-        <p class="text-lg font-bold text-slate-600 mb-8 border-l-4 border-brand-blue pl-4">Local Sightseeing • Outstation Trips • Comfortable Travel</p>
-
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 text-sm font-semibold text-slate-700">
-          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-road text-brand-blue text-lg"></i> Local & Outstation Trips</li>
-          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-map-location text-brand-blue text-lg"></i> Airport & Railway Pickup</li>
-          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-ban text-brand-blue text-lg"></i> Clear, Upfront Pricing</li>
-          <li class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-50"><i class="fa-solid fa-car-burst text-brand-blue text-lg"></i> Comfortable Travel Options</li>
-        </ul>
-
-        <div class="flex flex-col sm:flex-row gap-5">
-          <a href="#" data-business-phone-link class="flex items-center justify-center gap-3 bg-brand-dark hover:bg-slate-900 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 pulse-btn-call">
-            <div class="bg-white/10 p-2 rounded-lg"><i class="fa-solid fa-phone-volume text-xl"></i></div>
-            <div class="text-left">
-              <span class="block text-[10px] uppercase text-slate-400 tracking-wider">Call to Book</span>
-              <span class="block text-lg leading-tight">+91 95712 84521</span>
-            </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#" data-business-phone-link class="inline-flex items-center justify-center gap-3 bg-[#0a3d73] hover:bg-[#062c53] text-white px-6 py-3.5 rounded-full font-bold shadow-lg transition-all hover:-translate-y-0.5">
+            <i class="fa-solid fa-phone text-lg"></i><span class="text-left"><span class="block text-xs text-blue-100">Call Now</span><span class="block">+91 95712 84521</span></span>
           </a>
-          <button onclick="openBookingModal()" class="flex items-center justify-center gap-3 bg-gradient-to-r from-brand-blue to-brand-light hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-            <i class="fa-solid fa-calendar-check text-2xl"></i>
-            <div class="text-left">
-              <span class="block text-[10px] uppercase text-blue-100 tracking-wider">Quick Trip Enquiry</span>
-              <span class="block text-lg leading-tight">Book Online</span>
-            </div>
-          </button>
+          <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-[#12ae58] hover:bg-[#079449] text-white px-6 py-3.5 rounded-full font-bold shadow-lg transition-all hover:-translate-y-0.5">
+            <i class="fa-brands fa-whatsapp text-2xl"></i><span class="text-left"><span class="block">WhatsApp Booking</span><span class="block text-xs font-medium text-green-50">Click Here</span></span>
+          </a>
         </div>
       </div>
-
-      <!-- Hero Images -->
-      <div class="relative reveal-right">
-        <div class="image-zoom-container rounded-3xl shadow-2xl border-4 border-white overflow-hidden bg-white">
-           <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Tour and travel vehicle in Jaipur" class="w-full h-[400px] md:h-[500px] object-cover image-zoom hover:scale-105 transition-transform duration-700">
+      <div class="relative z-10 flex flex-col justify-end items-center md:items-end min-h-[210px] md:min-h-[300px] reveal-right">
+        <div class="hidden md:flex hero-car-pair items-end justify-center gap-3 w-full">
+          <img src="https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg" alt="Maruti Suzuki Ertiga CNG" loading="lazy">
+          <img src="https://images.financialexpressdigital.com/2023/02/Hyundai-Aura-2.jpg" alt="Hyundai Aura" loading="lazy">
         </div>
-        
-        <!-- Floating Elements -->
-        <div class="absolute -bottom-8 -left-6 sm:-left-12 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 animate-bounce hover:animate-none transition-all duration-300" style="animation-duration: 3s;">
-          <div class="bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center text-brand-blue text-2xl shadow-sm">
-             <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <div class="pr-2">
-            <p class="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider mb-1">Travel Made Easier</p>
-            <p class="text-sm font-black text-slate-800">Safe & Secure</p>
-          </div>
+        <div class="md:hidden hero-car-pair flex items-end justify-center gap-2 w-full mt-2">
+          <img src="https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg" alt="Maruti Suzuki Ertiga CNG" loading="lazy">
+          <img src="https://images.financialexpressdigital.com/2023/02/Hyundai-Aura-2.jpg" alt="Hyundai Aura" loading="lazy">
         </div>
-
-        <div class="absolute top-10 right-4 sm:-right-8 bg-white/95 backdrop-blur px-5 py-3 rounded-2xl shadow-2xl border border-slate-100 rotate-3 hover:rotate-0 transition-transform duration-300">
-          <span class="cursive-text text-3xl text-gradient font-bold drop-shadow-sm">Let's Explore Rajasthan!</span>
+        <div class="bg-white/90 backdrop-blur rounded-xl shadow-lg p-3 mt-4 text-center md:mr-5 border border-white/70">
+          <span class="text-[#0a3d73] font-black brand-heading text-xl">Explore Rajasthan With Us</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= FEATURES GRID ================= -->
-  <section class="py-12 bg-white border-y border-slate-100 relative z-20 shadow-soft">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-      <div class="reveal delay-100 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
-        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
-            <i class="fa-solid fa-car-burst text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
-        </div>
-        <h3 class="font-bold text-sm text-slate-800">Comfortable Vehicles</h3>
-      </div>
-      <div class="reveal delay-200 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
-        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
-            <i class="fa-solid fa-plane-arrival text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
-        </div>
-        <h3 class="font-bold text-sm text-slate-800">Airport Pickup</h3>
-      </div>
-      <div class="reveal delay-300 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
-        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
-            <i class="fa-solid fa-clock-rotate-left text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
-        </div>
-        <h3 class="font-bold text-sm text-slate-800">Flexible Trip Plans</h3>
-      </div>
-      <div class="reveal delay-400 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
-        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
-            <i class="fa-solid fa-comment-dollar text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
-        </div>
-        <h3 class="font-bold text-sm text-slate-800">Clear, Upfront Pricing</h3>
-      </div>
-      <div class="reveal delay-500 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
-        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
-            <i class="fa-solid fa-headset text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
-        </div>
-        <h3 class="font-bold text-sm text-slate-800">Travel Assistance</h3>
-      </div>
-      <div class="reveal delay-500 p-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 border border-transparent hover:border-blue-100 hover:shadow-lg group">
-        <div class="w-14 h-14 mx-auto bg-blue-50 group-hover:bg-white rounded-full flex items-center justify-center mb-4 transition-colors shadow-sm">
-            <i class="fa-solid fa-user-secret text-2xl text-brand-blue group-hover:scale-110 transition-transform"></i>
-        </div>
-        <h3 class="font-bold text-sm text-slate-800">Convenient Travel</h3>
-      </div>
+  <!-- Travel service strip -->
+  <section class="bg-[#f0f7ff] border-y border-blue-100">
+    <div class="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+      <div class="service-tile px-2 py-2"><i class="fa-solid fa-plane-arrival text-2xl sm:text-3xl text-[#0b559e] mb-2"></i><h3 class="font-bold text-sm text-[#123a66]">Airport Transfer</h3><p class="text-xs text-slate-500 mt-1">Pickup &amp; Drop</p></div>
+      <div class="service-tile px-2 py-2"><i class="fa-solid fa-place-of-worship text-2xl sm:text-3xl text-[#0b559e] mb-2"></i><h3 class="font-bold text-sm text-[#123a66]">Religious Tour</h3><p class="text-xs text-slate-500 mt-1">Khatu Shyam Ji | Salasar Balaji</p></div>
+      <div class="service-tile px-2 py-2"><i class="fa-solid fa-map-location-dot text-2xl sm:text-3xl text-[#0b559e] mb-2"></i><h3 class="font-bold text-sm text-[#123a66]">Rajasthan Tour</h3><p class="text-xs text-slate-500 mt-1">Jaipur | Udaipur | Jodhpur</p></div>
+      <div class="service-tile px-2 py-2"><i class="fa-solid fa-car-side text-2xl sm:text-3xl text-[#0b559e] mb-2"></i><h3 class="font-bold text-sm text-[#123a66]">Outstation Taxi</h3><p class="text-xs text-slate-500 mt-1">One Way / Round Trip</p></div>
+      <div class="service-tile px-2 py-2"><i class="fa-solid fa-building text-2xl sm:text-3xl text-[#0b559e] mb-2"></i><h3 class="font-bold text-sm text-[#123a66]">Corporate Booking</h3><p class="text-xs text-slate-500 mt-1">Monthly Attachment</p></div>
+      <div class="service-tile px-2 py-2"><i class="fa-solid fa-shield-halved text-2xl sm:text-3xl text-[#0b559e] mb-2"></i><h3 class="font-bold text-sm text-[#123a66]">Safe &amp; Comfortable</h3><p class="text-xs text-slate-500 mt-1">Well Maintained Vehicles</p></div>
     </div>
   </section>
 
-  <!-- ================= OUR VEHICLES (DATABASE-DRIVEN) ================= -->
-  <section id="vehicles" class="py-24 bg-slate-50 relative">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-16 reveal">
-        <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em] mb-3">Our Travel Fleet</h4>
-        <h2 class="text-4xl font-black text-brand-dark">CHOOSE YOUR TRAVEL VEHICLE</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
-        <p class="text-slate-500 font-medium mt-6 text-lg">Sedans | SUVs | Family & Group Travel</p>
-        <p id="fleet-status" class="text-sm text-amber-700 mt-4" role="status"></p>
+  <!-- About us -->
+  <section id="about" class="bg-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-[.9fr_1.4fr] gap-8 lg:gap-12 items-center">
+      <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white reveal-left">
+        <img src="https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg" alt="Hawa Mahal, Jaipur Rajasthan" loading="lazy" class="w-full h-56 sm:h-72 object-cover">
       </div>
-      <div id="vehicles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="md:col-span-3 bg-white rounded-2xl p-8 text-center text-slate-500">गाड़ियों की जानकारी लोड हो रही है…</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= POPULAR TRAVEL SERVICES / HOW IT WORKS ================= -->
-  <section id="categories" class="py-24 bg-white relative overflow-hidden border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 relative z-10 pt-10">
-      
-      <div class="text-center mb-16 reveal-scale">
-        <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em] mb-3">Find the Right Trip for You</h4>
-        <h2 class="text-4xl font-black text-brand-dark">POPULAR TRAVEL SERVICES</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-        <!-- Category 1 -->
-        <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover-card border border-slate-200 group reveal delay-100">
-          <div class="image-zoom-container h-48 relative">
-             <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" alt="Economy Cars" class="w-full h-full object-cover image-zoom">
-             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent flex items-end p-6">
-                 <h3 class="font-black text-2xl text-white">Jaipur Local Sightseeing</h3>
-             </div>
-          </div>
-          <div class="p-6">
-            <p class="text-sm text-slate-600 mb-4 leading-relaxed">Explore Jaipur’s forts, palaces, markets and popular attractions with a trip planned around your schedule.</p>
-            <ul class="text-xs font-bold text-slate-500 space-y-2 mb-6">
-                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Jaipur city sightseeing</li>
-                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Flexible pickup and drop-off</li>
-            </ul>
-            <button onclick="openBookingModal('Jaipur Sightseeing')" class="text-brand-blue font-bold text-sm hover:text-brand-dark transition-colors">Book a Jaipur Tour <i class="fa-solid fa-arrow-right ml-1"></i></button>
-          </div>
-        </div>
-        
-        <!-- Category 2 -->
-        <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover-card border border-slate-200 group reveal delay-200">
-          <div class="image-zoom-container h-48 relative">
-             <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80" alt="Family SUVs" class="w-full h-full object-cover image-zoom">
-             <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 to-transparent flex items-end p-6">
-                 <h3 class="font-black text-2xl text-white">Outstation Trips</h3>
-             </div>
-          </div>
-          <div class="p-6">
-            <p class="text-sm text-slate-600 mb-4 leading-relaxed">Plan a trip from Jaipur to nearby cities, family destinations or longer routes. Share your pickup and drop details to request a quote.</p>
-            <ul class="text-xs font-bold text-slate-500 space-y-2 mb-6">
-                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> One-way or round trips</li>
-                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Family and group travel</li>
-            </ul>
-            <button onclick="openBookingModal('Outstation Trip')" class="text-brand-blue font-bold text-sm hover:text-brand-dark transition-colors">Plan an Outstation Trip <i class="fa-solid fa-arrow-right ml-1"></i></button>
-          </div>
-        </div>
-        
-        <!-- Category 3 -->
-        <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover-card border border-slate-200 group reveal delay-300">
-          <div class="image-zoom-container h-48 relative">
-             <img src="https://images.unsplash.com/photo-1753806901556-3b7f216f0ca6?auto=format&fit=crop&w=600&q=80" alt="Adventure and off-road SUV" class="w-full h-full object-cover image-zoom" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80'">
-             <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/90 to-transparent flex items-end p-6">
-                 <h3 class="font-black text-2xl text-white">Airport & Railway Transfers</h3>
-             </div>
-          </div>
-          <div class="p-6">
-            <p class="text-sm text-slate-600 mb-4 leading-relaxed">Arrange pickup or drop-off for Jaipur airport and railway station travel. Share your time and location in the booking form.</p>
-            <ul class="text-xs font-bold text-slate-500 space-y-2 mb-6">
-                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Airport pickup and drop-off</li>
-                <li><i class="fa-solid fa-check text-brand-blue mr-2"></i> Railway station transfers</li>
-            </ul>
-            <button onclick="openBookingModal('Airport Transfer')" class="text-brand-blue font-bold text-sm hover:text-brand-dark transition-colors">Book a Transfer <i class="fa-solid fa-arrow-right ml-1"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- How it Works section -->
-      <div id="how-it-works" class="bg-brand-dark rounded-3xl p-10 md:p-16 text-white relative overflow-hidden reveal">
-        <div class="absolute -top-20 -right-20 w-64 h-64 bg-brand-blue rounded-full blur-3xl opacity-50"></div>
-        <div class="text-center mb-12 relative z-10">
-            <h2 class="text-3xl font-black mb-2">How It Works</h2>
-            <p class="text-blue-200">Plan your trip in 3 simple steps</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 text-center">
-            <div>
-                <div class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center text-3xl mb-4 border border-white/20 text-brand-accent"><i class="fa-solid fa-mobile-screen"></i></div>
-                <h3 class="font-bold text-xl mb-2">1. Share Your Trip</h3>
-                <p class="text-sm text-blue-100">Choose a travel option, enter your dates and pickup details online or through WhatsApp.</p>
-            </div>
-            <div class="hidden md:block absolute top-10 left-[25%] right-[25%] h-0.5 bg-white/20 z-0"></div> <!-- Connector Line -->
-            <div>
-                <div class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center text-3xl mb-4 border border-white/20 text-brand-accent"><i class="fa-solid fa-id-card"></i></div>
-                <h3 class="font-bold text-xl mb-2">2. Confirm the Details</h3>
-                <p class="text-sm text-blue-100">We’ll contact you to confirm the route, vehicle availability and fare.</p>
-            </div>
-            <div>
-                <div class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center text-3xl mb-4 border border-white/20 text-brand-accent"><i class="fa-solid fa-key"></i></div>
-                <h3 class="font-bold text-xl mb-2">3. Enjoy Your Journey</h3>
-                <p class="text-sm text-blue-100">Meet your travel provider at the agreed pickup point and enjoy your journey.</p>
-            </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= LONG TERM / CORPORATE FORM ================= -->
-  <section id="long-term" class="py-24 bg-slate-50 relative overflow-hidden">
-    <!-- Background overlay patterns -->
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-      <div class="text-slate-800 reveal-left">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-[2px] bg-brand-accent"></div>
-          <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em]">Corporate & Group Travel</h4>
-        </div>
-        <h2 class="text-4xl lg:text-5xl font-black mb-6 leading-tight text-brand-dark">CORPORATE &amp; GROUP <br/> TRAVEL</h2>
-        <p class="text-xl text-slate-600 mb-8 font-medium leading-relaxed border-l-4 border-brand-accent pl-4">Planning corporate travel, group trips or regular long-distance journeys? Share your requirements and request a suitable travel quote.</p>
-        
-        <ul class="space-y-5 mb-10">
-          <li class="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue"><i class="fa-solid fa-tags"></i></div>
-            <span class="font-bold text-lg">Custom Quotes for Longer Trips</span>
-          </li>
-          <li class="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-            <span class="font-bold text-lg">Travel Plans for Your Requirements</span>
-          </li>
-          <li class="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue"><i class="fa-solid fa-building"></i></div>
-            <span class="font-bold text-lg">Corporate and Group Enquiries</span>
-          </li>
-        </ul>
-      </div>
-      
-      <!-- Quote Form -->
       <div class="reveal-right">
-        <div class="bg-white text-slate-800 p-8 sm:p-10 rounded-3xl shadow-2xl relative border border-slate-100">
-          <div class="absolute -top-5 -right-5 w-20 h-20 bg-brand-accent rounded-full -z-10 blur-xl opacity-20"></div>
-          <div class="absolute -bottom-5 -left-5 w-20 h-20 bg-brand-blue rounded-full -z-10 blur-xl opacity-20"></div>
-          
-          <h3 class="text-2xl font-black text-center mb-2 text-brand-dark">Travel Enquiry Form</h3>
-          <p class="text-center text-slate-500 text-sm mb-8 font-medium">Share your trip duration and travel requirements for a personalised quote.</p>
-          
-          <form id="enquiry-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Name / Company</label>
-                <input name="name_or_company" type="text" autocomplete="name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium" required>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
-                <input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+()\s-]{10,18}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium" required>
-              </div>
-            </div>
-            <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Duration Required</label>
-                <select name="duration" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-600" required>
-                    <option value="15 Days">15 Days</option>
-                    <option value="1 Month">1 Month</option>
-                    <option value="3 Months">3 Months</option>
-                    <option value="6+ Months">6+ Months</option>
-                </select>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Trip Requirements (Route, Vehicle or Group Size)</label>
-              <textarea name="details" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium h-24 resize-none" required></textarea>
-            </div>
-            <button type="submit" class="w-full bg-gradient-to-r from-brand-blue to-brand-dark text-white font-black text-lg py-4 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
-              Submit Request <i class="fa-solid fa-paper-plane ml-2"></i>
-            </button>
-            <div id="success-msg" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl" role="status">
-              <h4 class="font-bold text-sm">पूछताछ सेव हो गई</h4>
-              <p id="enquiry-status-text" class="text-xs mt-1"></p>
-              <a id="enquiry-whatsapp-link" class="hidden mt-3 inline-flex bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold" target="_blank" rel="noopener">WhatsApp पर संदेश खोलें</a>
-            </div>
-            <div id="enquiry-error" class="hidden mt-4 text-sm text-red-700" role="alert"></div>
-          </form>
+        <p class="text-xs tracking-[.25em] uppercase font-extrabold text-[#0b559e] mb-2">About Us</p>
+        <h2 class="section-heading text-3xl sm:text-4xl font-black mb-5 md:text-left">RAJ TOUR AND TRAVELS – RAJASTHAN</h2>
+        <p class="hindi-text text-slate-600 leading-7 mb-3">हम राजस्थान की खूबसूरत जगहों की यात्रा को और भी खास बनाते हैं। हम आपको सुरक्षित, आरामदायक और भरोसेमंद टैक्सी एवं टूर सर्विस प्रदान करते हैं।</p>
+        <p class="hindi-text text-slate-600 leading-7 mb-5">चाहे आपको जयपुर के दर्शनीय स्थल देखने हों, धार्मिक यात्रा करनी हो, आउटस्टेशन ट्रिप या कॉर्पोरेट ट्रैवल की जरूरत हो—हम हर सफर में आपके साथ हैं।</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="flex items-center gap-2 text-[#0a4f91] text-sm font-bold"><i class="fa-solid fa-circle-check text-xl"></i><span>Trusted Service</span></div>
+          <div class="flex items-center gap-2 text-[#0a4f91] text-sm font-bold"><i class="fa-solid fa-user-tie text-xl"></i><span>Experienced Drivers</span></div>
+          <div class="flex items-center gap-2 text-[#0a4f91] text-sm font-bold"><i class="fa-solid fa-hand-holding-dollar text-xl"></i><span>Affordable Rates</span></div>
+          <div class="flex items-center gap-2 text-[#0a4f91] text-sm font-bold"><i class="fa-solid fa-headset text-xl"></i><span>24x7 Support</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= TESTIMONIALS ================= -->
-  <section id="reviews" class="py-24 bg-white relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-      <div class="text-center mb-16 reveal-scale">
-        <h4 class="text-brand-blue font-extrabold text-sm uppercase tracking-[0.2em] mb-3">Client Reviews</h4>
-        <h2 class="text-4xl font-black text-brand-dark">What Our Travellers Say</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
+  <!-- Our vehicles -->
+  <section id="vehicles" class="bg-[#eaf4ff] py-12 sm:py-16 border-y border-blue-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8 reveal">
+        <h2 class="section-heading text-3xl sm:text-4xl font-black">OUR VEHICLES</h2>
+        <p class="text-sm text-slate-600 mt-3">Comfortable Ride&nbsp; | &nbsp;Well Maintained&nbsp; | &nbsp;Always With You</p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative reveal delay-100 hover-card">
-          <i class="fa-solid fa-quote-right absolute top-6 right-8 text-slate-200 text-4xl"></i>
-          <div class="flex gap-1 text-yellow-400 mb-6 text-lg"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="text-base font-medium text-slate-600 mb-8 leading-relaxed relative z-10">"Our weekend trip from Jaipur was easy to plan. Pickup details were clear and the journey was comfortable."</p>
-          <div class="flex items-center gap-4 border-t border-slate-200 pt-6">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue font-black text-xl">A</div>
-            <div>
-                <h4 class="font-bold text-brand-dark">Amit Sharma</h4>
-                <p class="text-xs font-bold text-slate-400">Jaipur, Weekend Renter</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-brand-dark text-white p-8 rounded-3xl relative reveal delay-200 hover-card shadow-xl transform md:-translate-y-4">
-          <i class="fa-solid fa-quote-right absolute top-6 right-8 text-white/10 text-4xl"></i>
-          <div class="flex gap-1 text-yellow-400 mb-6 text-lg"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="text-base font-medium text-blue-100 mb-8 leading-relaxed relative z-10">"We planned an outstation journey from Jaipur and appreciated having our pickup and trip details organised in advance."</p>
-          <div class="flex items-center gap-4 border-t border-white/20 pt-6">
-            <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white font-black text-xl">N</div>
-            <div>
-                <h4 class="font-bold text-white">Neha Gupta</h4>
-                <p class="text-xs font-bold text-blue-300">Delhi, Tourist</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative reveal delay-300 hover-card">
-          <i class="fa-solid fa-quote-right absolute top-6 right-8 text-slate-200 text-4xl"></i>
-          <div class="flex gap-1 text-yellow-400 mb-6 text-lg"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="text-base font-medium text-slate-600 mb-8 leading-relaxed relative z-10">"We needed transport for a group trip. The team helped us coordinate travel timing and route requirements."</p>
-          <div class="flex items-center gap-4 border-t border-slate-200 pt-6">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue font-black text-xl">R</div>
-            <div>
-                <h4 class="font-bold text-brand-dark">Rahul Verma</h4>
-                <p class="text-xs font-bold text-slate-400">Corporate Manager</p>
-            </div>
-          </div>
-        </div>
+      <div id="vehicles-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white rounded-xl p-6 text-center text-slate-500">Loading vehicles…</div>
+      </div>
+      <p class="text-center text-xs sm:text-sm text-slate-500 mt-5">गाड़ी की उपलब्धता और अंतिम किराये की पुष्टि बुकिंग के समय की जाएगी।</p>
+    </div>
+  </section>
+
+  <!-- Tour packages -->
+  <section id="packages" class="bg-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8 reveal">
+        <h2 class="section-heading text-3xl sm:text-4xl font-black">POPULAR TOUR PACKAGES</h2>
+        <p class="text-sm text-slate-600 mt-3">Spiritual&nbsp; | &nbsp;Heritage&nbsp; | &nbsp;Adventure&nbsp; | &nbsp;Rajasthan</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <article class="package-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-md reveal">
+          <div class="package-image"><img src="https://static.punjabkesari.in/multimedia/09_28_087700093kha2.jpg" alt="Khatu Shyam Ji temple" loading="lazy"></div>
+          <div class="p-4"><h3 class="font-black text-lg leading-tight text-[#103c6c]">Khatu Shyam Ji &amp; Salasar Balaji</h3><p class="text-xs text-slate-500 mt-2">Devotional journey</p><button onclick="openBookingModal('Khatu Shyam Ji &amp; Salasar Balaji')" class="mt-3 bg-[#0b559e] hover:bg-[#073668] text-white text-xs font-bold px-4 py-2 rounded-md">View Package</button></div>
+        </article>
+        <article class="package-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-md reveal delay-100">
+          <div class="package-image"><img src="https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg" alt="Hawa Mahal in Jaipur" loading="lazy"></div>
+          <div class="p-4"><h3 class="font-black text-lg leading-tight text-[#103c6c]">Jaipur City Tour</h3><p class="text-xs text-slate-500 mt-2">Heritage &amp; sightseeing</p><button onclick="openBookingModal('Jaipur City Tour')" class="mt-3 bg-[#0b559e] hover:bg-[#073668] text-white text-xs font-bold px-4 py-2 rounded-md">View Package</button></div>
+        </article>
+        <article class="package-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-md reveal delay-200">
+          <div class="package-image"><img src="https://rajasthantourismbuzz.wordpress.com/wp-content/uploads/2012/07/lake_palace_udaipur.jpg" alt="Lake Palace, Udaipur" loading="lazy"></div>
+          <div class="p-4"><h3 class="font-black text-lg leading-tight text-[#103c6c]">Jaipur - Udaipur Tour</h3><p class="text-xs text-slate-500 mt-2">Lakes, palaces &amp; culture</p><button onclick="openBookingModal('Jaipur - Udaipur Tour')" class="mt-3 bg-[#0b559e] hover:bg-[#073668] text-white text-xs font-bold px-4 py-2 rounded-md">View Package</button></div>
+        </article>
+        <article class="package-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-md reveal delay-300">
+          <div class="package-image"><img src="https://media.assettype.com/outlooktraveller/2024-05/b2a13bba-796b-48ec-895b-9aba98cdb975/shutterstock_1724207551.jpg?auto=format%2Ccompress&amp;enlarge=true&amp;fit=max&amp;h=900&amp;w=1200" alt="Jaisalmer desert camel tour" loading="lazy"></div>
+          <div class="p-4"><h3 class="font-black text-lg leading-tight text-[#103c6c]">Jaipur - Jaisalmer Tour</h3><p class="text-xs text-slate-500 mt-2">Golden dunes &amp; desert</p><button onclick="openBookingModal('Jaipur - Jaisalmer Tour')" class="mt-3 bg-[#0b559e] hover:bg-[#073668] text-white text-xs font-bold px-4 py-2 rounded-md">View Package</button></div>
+        </article>
+        <article class="package-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-md reveal delay-400">
+          <div class="package-image"><img src="https://osakaindotravel.com/tour/camel1.jpg" alt="Rajasthan desert camel safari" loading="lazy"></div>
+          <div class="p-4"><h3 class="font-black text-lg leading-tight text-[#103c6c]">Rajasthan Special Tour</h3><p class="text-xs text-slate-500 mt-2">Explore Rajasthan highlights</p><button onclick="openBookingModal('Rajasthan Special Tour')" class="mt-3 bg-[#0b559e] hover:bg-[#073668] text-white text-xs font-bold px-4 py-2 rounded-md">View Package</button></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer id="contact" class="bg-[#051021] text-white pt-20 pb-10 border-t-4 border-brand-blue relative">
-    <!-- Decorative Map Icon Background -->
-    <i class="fa-solid fa-car-side text-[#0a1b35] text-[20rem] absolute top-10 right-10 z-0 opacity-50 pointer-events-none"></i>
-    
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 relative z-10">
-      <div class="lg:col-span-2 pr-0 lg:pr-10">
-        <h3 class="text-2xl font-black mb-2 text-white">RAJ TOUR &amp; TRAVELS</h3>
-        <span class="text-xs font-bold tracking-[0.25em] text-brand-light uppercase block mb-6">— JAIPUR —</span>
-        <p class="text-slate-400 text-sm mb-8 leading-relaxed font-medium">Your travel partner in Jaipur for local sightseeing, outstation journeys, airport and railway transfers, and corporate or group travel. Share your requirements and plan your next trip with Raj Tour & Travels.</p>
-        <div class="flex gap-4">
-          
-          <a href="https://www.instagram.com/rajtourandtravels09_?cplk=MWR2cnVnaHlhbnNyYw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
-          
-        </div>
-      </div>
-      
-      <div>
-        <h3 class="text-lg font-bold mb-6 text-white border-b border-white/10 pb-3 inline-block">Quick Links</h3>
-        <ul class="space-y-3 text-slate-400 text-sm font-medium">
-          <li><a href="#home" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Home</a></li>
-          <li><a href="#how-it-works" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> How it Works</a></li>
-          <li><a href="#vehicles" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Our Fleet</a></li>
-          <li><a href="#categories" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Categories</a></li>
-          <li><a href="#long-term" class="hover:text-brand-light hover:translate-x-2 transition-transform inline-block"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> Corporate &amp; Group Travel</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h3 class="text-lg font-bold mb-6 text-white border-b border-white/10 pb-3 inline-block">Contact Info</h3>
-        <ul class="space-y-4 text-slate-400 text-sm font-medium">
-          <li class="flex items-start gap-3 bg-white/5 p-3 rounded-xl border border-white/5">
-              <i class="fa-solid fa-location-dot mt-1 text-brand-light text-lg"></i> 
-              <span>Jaipur, Rajasthan, India<br/><span class="text-xs mt-1 block">Pickup Hub & Delivery available</span></span>
-          </li>
-          <li class="flex items-center gap-3">
-              <i class="fa-solid fa-phone text-brand-light bg-white/5 p-2 rounded-lg"></i> 
-              <a href="#" data-business-phone-link class="hover:text-white font-bold text-base transition-colors">+91 95712 84521</a>
-          </li>
-          <li class="flex items-center gap-3">
-              <i class="fa-brands fa-whatsapp text-emerald-400 bg-white/5 p-2 rounded-lg"></i> 
-              <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="hover:text-white font-bold text-base transition-colors">+91 95712 84521</a>
-          </li>
-        </ul>
+  <!-- Rajasthan photo gallery -->
+  <section id="gallery" class="bg-[#f2f7fc] py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8 reveal"><h2 class="section-heading text-3xl sm:text-4xl font-black">EXPLORE RAJASTHAN</h2><p class="text-sm text-slate-600 mt-3">Beautiful places, memorable journeys</p></div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+        <div class="gallery-card rounded-xl overflow-hidden shadow-sm bg-white reveal"><img class="h-36 sm:h-52" src="https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg" alt="Hawa Mahal Jaipur" loading="lazy"><p class="font-bold text-sm text-[#103c6c] p-3">Jaipur — The Pink City</p></div>
+        <div class="gallery-card rounded-xl overflow-hidden shadow-sm bg-white reveal delay-100"><img class="h-36 sm:h-52" src="https://rajasthantourismbuzz.wordpress.com/wp-content/uploads/2012/07/lake_palace_udaipur.jpg" alt="Udaipur Lake Palace" loading="lazy"><p class="font-bold text-sm text-[#103c6c] p-3">Udaipur — City of Lakes</p></div>
+        <div class="gallery-card rounded-xl overflow-hidden shadow-sm bg-white reveal delay-200"><img class="h-36 sm:h-52" src="https://media.assettype.com/outlooktraveller/2024-05/b2a13bba-796b-48ec-895b-9aba98cdb975/shutterstock_1724207551.jpg?auto=format%2Ccompress&amp;enlarge=true&amp;fit=max&amp;h=900&amp;w=1200" alt="Jaisalmer desert" loading="lazy"><p class="font-bold text-sm text-[#103c6c] p-3">Jaisalmer — Golden Desert</p></div>
+        <div class="gallery-card rounded-xl overflow-hidden shadow-sm bg-white reveal delay-300"><img class="h-36 sm:h-52" src="https://static.wixstatic.com/media/6c2f03_0c083f75e3c44e15b05e28d5d2930d32~mv2.png/v1/fill/w_980%2Ch_581%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/6c2f03_0c083f75e3c44e15b05e28d5d2930d32~mv2.png" alt="Salasar Balaji temple" loading="lazy"><p class="font-bold text-sm text-[#103c6c] p-3">Salasar — Spiritual Journey</p></div>
       </div>
     </div>
-    
-    <div class="max-w-7xl mx-auto px-4 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs font-medium relative z-10">
-      <p>&copy; 2026 Raj Tour & Travels - Jaipur. All rights reserved.</p>
-      <div class="flex gap-4">
-          <a href="#" class="hover:text-slate-300">Privacy Policy</a>
-          <span class="w-1 h-1 bg-slate-700 rounded-full mt-1.5"></span>
-          <a href="#" class="hover:text-slate-300">Terms & Conditions</a>
-          <span class="w-1 h-1 bg-slate-700 rounded-full mt-1.5"></span>
-          <a href="/admin.html" class="hover:text-white hover:text-brand-light transition-colors">Admin Login</a>
+  </section>
+
+  <!-- Corporate / group bookings -->
+  <section id="long-term" class="corporate-banner py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="text-white reveal-left">
+        <p class="text-xs font-extrabold tracking-[.25em] uppercase text-blue-200 mb-3">Corporate Travel</p>
+        <h2 class="brand-heading text-4xl sm:text-5xl font-black leading-tight mb-2">CORPORATE CAR RENTAL</h2>
+        <p class="text-blue-100 font-semibold mb-5">Your Business Partner on the Move</p>
+        <ul class="space-y-3 text-sm sm:text-base font-semibold text-white">
+          <li><i class="fa-solid fa-circle-check mr-2 text-amber-300"></i> Employee Transportation</li>
+          <li><i class="fa-solid fa-circle-check mr-2 text-amber-300"></i> Monthly Cab Attachment</li>
+          <li><i class="fa-solid fa-circle-check mr-2 text-amber-300"></i> Airport &amp; Railway Transfers</li>
+          <li><i class="fa-solid fa-circle-check mr-2 text-amber-300"></i> Long Term Rental</li>
+          <li><i class="fa-solid fa-circle-check mr-2 text-amber-300"></i> Professional &amp; Reliable Service</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-xl shadow-2xl p-5 sm:p-7 reveal-right">
+        <h3 class="brand-heading text-2xl sm:text-3xl font-black text-[#0a3d73] mb-1">Get a Free Corporate Quote</h3>
+        <p class="text-slate-500 text-sm mb-5">Tell us about your travel requirements.</p>
+        <form id="enquiry-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="block text-xs font-bold text-slate-600 mb-1">Company / Name *</label><input name="name_or_company" type="text" required placeholder="Company name" class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none"></div>
+            <div><label class="block text-xs font-bold text-slate-600 mb-1">Contact Person</label><input type="text" placeholder="Contact person" class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none"></div>
+            <div><label class="block text-xs font-bold text-slate-600 mb-1">Mobile Number *</label><input name="phone" type="tel" pattern="[0-9+()\s-]{10,18}" required placeholder="Mobile number" class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none"></div>
+            <div><label class="block text-xs font-bold text-slate-600 mb-1">Number of Vehicles</label><select class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none"><option>Select</option><option>1-3</option><option>4-10</option><option>10+</option></select></div>
+          </div>
+          <div><label class="block text-xs font-bold text-slate-600 mb-1">Duration *</label><select name="duration" required class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none"><option value="">Select duration</option><option>One Day</option><option>Weekly</option><option>Monthly</option><option>Long Term</option><option>Group Tour</option></select></div>
+          <div><label class="block text-xs font-bold text-slate-600 mb-1">Message / Requirements</label><textarea name="details" rows="3" placeholder="Share your travel requirements" class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none"></textarea></div>
+          <button type="submit" class="w-full bg-gradient-to-r from-[#0b559e] to-[#0a3d73] hover:from-[#073668] hover:to-[#0b559e] text-white rounded-lg py-3 font-bold transition-all"><i class="fa-solid fa-paper-plane mr-2"></i> Send Request</button>
+          <div id="success-msg" class="hidden rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800" role="status"><span class="font-bold">Request saved.</span><p id="enquiry-status-text" class="text-xs mt-1"></p><a id="enquiry-whatsapp-link" class="hidden mt-2 inline-flex bg-emerald-600 text-white px-3 py-2 rounded-md font-bold" target="_blank" rel="noopener">Open WhatsApp</a></div>
+          <div id="enquiry-error" class="hidden text-sm text-red-700" role="alert"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer reviews -->
+  <section id="reviews" class="bg-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8"><h2 class="section-heading text-3xl sm:text-4xl font-black">WHAT OUR CUSTOMERS SAY</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“Very good service, neat and clean vehicles, driver behaviour also very polite. Highly recommended.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Rohit Sharma</p><p class="text-xs text-slate-400">Jaipur</p></div></article>
+        <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“Khatu Shyam Ji trip was awesome. On time pickup and comfortable journey.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Pooja Meena</p><p class="text-xs text-slate-400">Ajmer</p></div></article>
+        <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“We have been using Raj Tour and Travels for our corporate needs. Best service and professional team.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Sanjeev Choudhary</p><p class="text-xs text-slate-400">Jaipur</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-[#05254a] text-white pt-12 pb-28 sm:pb-20 border-t-4 border-[#0b70bc] relative">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9 mb-10 relative z-10">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4"><span class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl"><i class="fa-solid fa-car-side"></i></span><div><h3 class="brand-heading text-2xl font-black">RAJ TOUR AND TRAVELS</h3><p class="text-xs tracking-[.28em] text-blue-200">— RAJASTHAN —</p></div></div>
+        <p class="text-blue-100/80 text-sm leading-6 max-w-xl">Your trusted travel partner in Jaipur for local sightseeing, outstation trips, religious tours, airport and railway transfers, and corporate travel. A comfortable journey starts with us.</p>
+        <div class="flex items-center gap-3 mt-5"><a href="https://www.instagram.com/rajtourandtravels09_?cplk=MWR2cnVnaHlhbnNyYw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-lg bg-white/10 hover:bg-blue-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a></div>
+      </div>
+      <div>
+        <h3 class="brand-heading font-bold text-xl border-b border-white/20 pb-2 inline-block mb-4">Quick Links</h3>
+        <ul class="space-y-3 text-blue-100/80 text-sm">
+          <li><a href="#home" class="hover:text-white">Home</a></li><li><a href="#about" class="hover:text-white">About Us</a></li><li><a href="#vehicles" class="hover:text-white">Our Vehicles</a></li><li><a href="#packages" class="hover:text-white">Tour Packages</a></li><li><a href="#long-term" class="hover:text-white">Corporate Travel</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="brand-heading font-bold text-xl border-b border-white/20 pb-2 inline-block mb-4">Contact Info</h3>
+        <div class="space-y-4 text-sm text-blue-100/80">
+          <p class="flex gap-3"><i class="fa-solid fa-location-dot text-xl text-blue-300 mt-1"></i><span>Jaipur, Rajasthan, India<br><span class="text-xs">Pickup &amp; drop available</span></span></p>
+          <p class="flex gap-3 items-center"><i class="fa-solid fa-phone text-blue-300"></i><a href="#" data-business-phone-link class="hover:text-white font-bold">+91 95712 84521</a></p>
+          <p class="flex gap-3 items-center"><i class="fa-brands fa-whatsapp text-green-300 text-lg"></i><a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="hover:text-white font-bold">WhatsApp Now</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-100/70 text-xs relative z-10">
+      <p>&copy; 2026 Raj Tour and Travels - Rajasthan. All rights reserved.</p>
+      <div class="footer-links text-xs font-semibold relative z-[60]">
+        <a href="/admin.html" class="text-amber-300 hover:text-white underline underline-offset-4">Admin Login</a>
+        <span class="w-1 h-1 rounded-full bg-blue-300"></span>
+        <a href="#" class="hover:text-white">Privacy Policy</a>
+        <span class="w-1 h-1 rounded-full bg-blue-300"></span>
+        <a href="#" class="hover:text-white">Terms &amp; Conditions</a>
       </div>
     </div>
   </footer>
 
   <!-- Floating WhatsApp Button -->
-  <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="fixed bottom-6 right-6 bg-brand-whatsapp text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform z-50 pulse-btn-whatsapp group">
-    <i class="fa-brands fa-whatsapp group-hover:rotate-12 transition-transform"></i>
-  </a>
+  <a id="floating-whatsapp" href="#" data-business-whatsapp-link target="_blank" rel="noopener" aria-label="Chat with Raj Tour and Travels on WhatsApp" class="fixed bottom-5 right-5 bg-[#15ad57] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform pulse-btn-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
 
   <!-- Trip Booking Modal -->
   <div id="booking-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 bg-brand-dark/50 backdrop-blur-sm p-4">
@@ -639,7 +498,7 @@
         <div>
           <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Select Vehicle / Travel Service</label>
           <select id="vehicle-select" name="vehicle_selection" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100 transition-all font-medium text-slate-700 shadow-inner" required>
-            <option value="" disabled selected>Choose a vehicle</option>
+            <option value="" disabled selected>Select a vehicle or tour package</option>
             <option value="category:Jaipur Sightseeing">Jaipur Local Sightseeing</option>
             <option value="category:Outstation Trip">Outstation Trip</option>
             <option value="category:Airport Transfer">Airport / Railway Transfer</option>
@@ -663,7 +522,7 @@
           </select>
         </div>
         <button type="submit" id="booking-submit-btn" class="w-full mt-2 bg-gradient-to-r from-brand-blue to-brand-dark text-white font-black text-lg py-3.5 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 flex justify-center items-center gap-2">
-          Booking Request भेजें <i class="fa-solid fa-key"></i>
+          Booking Request भेजें <i class="fa-solid fa-route"></i>
         </button>
         <div id="booking-success-msg" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl" role="status">
           <h4 class="font-bold">बुकिंग अनुरोध सेव हो गया</h4>
@@ -939,9 +798,9 @@
     let fleetCars = [];
 
     const starterCars = [
-      { id: 'demo-i20', name: 'Hyundai i20', category: 'Local & Outstation Travel', description: 'शहर और वीकेंड ट्रिप के लिए आरामदायक यात्रा विकल्प।', seats: 5, transmission: 'Manual', luggage: '2 Bags', price_per_day: 1500, image_url: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80', is_available: true, display_order: 1 },
-      { id: 'demo-creta', name: 'Hyundai Creta', category: 'Family & Outstation Travel', description: 'परिवार और लंबी यात्रा के लिए आरामदायक विकल्प।', seats: 5, transmission: 'Auto/Manual', luggage: '3 Bags', price_per_day: 2500, image_url: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80', is_available: true, display_order: 2 },
-      { id: 'demo-thar', name: 'Mahindra Thar', category: 'Group & Outstation Travel', description: 'लंबी दूरी और समूह यात्रा के लिए विकल्प।', seats: 4, transmission: 'Auto/Manual', luggage: '4x4', price_per_day: 3500, image_url: 'https://images.unsplash.com/photo-1753806901556-3b7f216f0ca6?auto=format&fit=crop&w=800&q=80', is_available: true, display_order: 3 }
+      { id: 'demo-ertiga', name: 'Maruti Suzuki Ertiga CNG', category: 'Family Trip • Outstation • Religious Tour', description: '6 + 1 Seater  |  Manual', seats: '6 + 1 Seater', transmission: 'Manual', luggage: 'Family Trip / Outstation / Religious Tour', price_per_day: 0, image_url: 'https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg', is_available: true, display_order: 1 },
+      { id: 'demo-aura', name: 'Hyundai Aura', category: 'Airport • Local • Outstation', description: '5 + 1 Seater  |  Manual', seats: '5 + 1 Seater', transmission: 'Manual', luggage: 'Airport / Local / Outstation', price_per_day: 0, image_url: 'https://images.financialexpressdigital.com/2023/02/Hyundai-Aura-2.jpg', is_available: true, display_order: 2 },
+      { id: 'demo-innova', name: 'Toyota Innova (Available)', category: 'Family Trip • Corporate • Tour Packages', description: '7 + 1 Seater  |  Manual / Automatic', seats: '7 + 1 Seater', transmission: 'Manual / Automatic', luggage: 'Family Trip / Corporate / Tour Packages', price_per_day: 0, image_url: 'https://images.unsplash.com/photo-1748215210939-ad8b6c8c086d?auto=format&fit=crop&w=900&q=85', is_available: true, display_order: 3 }
     ];
 
     function escapeHtml(value) {
@@ -952,48 +811,64 @@
       const grid = document.getElementById('vehicles-grid');
       const select = document.getElementById('vehicle-select');
       if (!grid || !select) return;
-      if (!cars.length) {
-        grid.innerHTML = '<div class="md:col-span-3 bg-white rounded-2xl p-8 text-center text-slate-500">अभी कोई गाड़ी उपलब्ध नहीं है। कृपया बाद में देखें।</div>';
-        return;
-      }
+      if (!cars || !cars.length) cars = starterCars;
+
       grid.innerHTML = cars.map(car => `
-        <article class="bg-white rounded-3xl border border-slate-100 shadow-soft hover-card overflow-hidden group">
-          <div class="relative h-56 image-zoom-container bg-slate-100">
-            <img src="${escapeHtml(car.image_url || '')}" alt="${escapeHtml(car.name)}" data-car-id="${escapeHtml(car.id)}" loading="lazy" class="w-full h-full object-cover image-zoom">
-            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-brand-blue shadow-sm">${escapeHtml(car.category || 'Tour & Travels')}</div>
-            ${car.is_available ? '' : '<div class="absolute inset-0 bg-slate-900/55 flex items-center justify-center"><span class="bg-white text-red-700 px-4 py-2 rounded-full font-bold">फिलहाल उपलब्ध नहीं</span></div>'}
+        <article class="fleet-card bg-white rounded-xl overflow-hidden border border-blue-100 shadow-md group">
+          <div class="fleet-image relative">
+            <img src="${escapeHtml(car.image_url || '')}" alt="${escapeHtml(car.name)}" loading="lazy" data-car-id="${escapeHtml(car.id)}">
+            <span class="absolute top-3 left-3 rounded-full bg-white/95 text-[#0b559e] text-[10px] uppercase tracking-wide font-extrabold px-3 py-1 shadow-sm">Travel Service</span>
+            ${car.is_available === false ? '<span class="absolute inset-0 bg-slate-900/45 flex items-center justify-center text-white font-bold">Please Enquire</span>' : ''}
           </div>
-          <div class="p-8 relative">
-            <div class="absolute -top-6 left-8 bg-brand-dark text-white w-12 h-12 flex items-center justify-center rounded-xl shadow-lg border-4 border-white"><i class="fa-solid fa-car-side"></i></div>
-            <h3 class="text-2xl font-black text-brand-dark mb-1 mt-2">${escapeHtml(car.name)}</h3>
-            <p class="text-sm font-bold text-slate-500 mb-4">${escapeHtml(car.description || car.category || 'Travel service')}</p>
-            <div class="flex items-center justify-between gap-2 text-xs sm:text-sm text-slate-600 mb-4 pb-4 border-b border-slate-100">
-              <div><i class="fa-solid fa-users text-slate-400 mr-1"></i>${escapeHtml(car.seats || '—')} Seats</div>
-              <div><i class="fa-solid fa-gears text-slate-400 mr-1"></i>${escapeHtml(car.transmission || '—')}</div>
-              <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i>${escapeHtml(car.luggage || '—')}</div>
+          <div class="p-5 text-center">
+            <h3 class="brand-heading text-xl sm:text-2xl leading-tight font-black text-[#103c6c] min-h-[2.3rem]">${escapeHtml(car.name)}</h3>
+            <p class="text-xs text-slate-500 mt-2 mb-3">${escapeHtml(car.description || car.category || 'Comfortable travel option')}</p>
+            <div class="flex flex-wrap justify-center gap-2 text-[10px] sm:text-xs text-[#174a7d] mb-4">
+              <span class="bg-blue-50 rounded-full px-2.5 py-1"><i class="fa-solid fa-users mr-1"></i>${escapeHtml(car.seats || 'Family Travel')}</span>
+              <span class="bg-blue-50 rounded-full px-2.5 py-1"><i class="fa-solid fa-road mr-1"></i>${escapeHtml(car.transmission || 'Comfortable Ride')}</span>
             </div>
-            <div class="mb-6"><span class="text-xs text-slate-400 uppercase font-bold tracking-wider">Starting from</span><div class="text-2xl font-black text-brand-accent">₹${Number(car.price_per_day || 0).toLocaleString('en-IN')} <span class="text-sm text-slate-500 font-medium">/ दिन</span></div></div>
-            <button ${car.is_available ? '' : 'disabled'} onclick="openBookingModalById('${escapeHtml(car.id)}')" class="w-full text-center ${car.is_available ? 'bg-slate-100 hover:bg-brand-blue text-brand-dark hover:text-white' : 'bg-slate-200 text-slate-500 cursor-not-allowed'} font-bold py-3.5 rounded-xl transition-all duration-300">${car.is_available ? 'बुकिंग पूछताछ करें' : 'उपलब्ध नहीं'}</button>
+            <button ${car.is_available === false ? '' : ''} onclick="openBookingModalById('${escapeHtml(car.id)}')" class="w-full bg-[#0b559e] hover:bg-[#073668] text-white font-bold text-sm py-2.5 rounded-full transition-all shadow-sm">Book Now</button>
           </div>
-        </article>`).join('');
-      // If an off-road/Thar image URL is broken, use the working Thar image as a fallback.
+        </article>`).join('') + `
+        <article class="fleet-card bg-[#dceeff] rounded-xl overflow-hidden border border-blue-100 shadow-sm flex flex-col items-center justify-center text-center p-6 min-h-[330px]">
+          <div class="w-16 h-16 rounded-full bg-white text-[#0b559e] flex items-center justify-center text-3xl mb-4 shadow-sm"><i class="fa-solid fa-car-side"></i></div>
+          <h3 class="brand-heading text-2xl leading-tight font-black text-[#103c6c]">More Vehicles Available on Request</h3>
+          <p class="text-sm text-slate-600 mt-2 mb-5">For group travel and special requirements, contact us.</p>
+          <a href="#" data-business-whatsapp-link target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-[#0b559e] hover:bg-[#073668] text-white font-bold text-sm px-5 py-2.5 rounded-full"><i class="fa-brands fa-whatsapp"></i> Call / WhatsApp</a>
+        </article>`;
+
+      // Keep the booking selector in step with the same three featured vehicles and all tour services.
+      const oldVal = select.value;
+      const options = cars.map(car => `<option value="car:${escapeHtml(car.id)}" ${car.is_available === false ? 'disabled' : ''}>${escapeHtml(car.name)}</option>`).join('');
+      const services = [
+        ['Jaipur Local Sightseeing','category:Jaipur Local Sightseeing'],
+        ['Outstation Trip','category:Outstation Trip'],
+        ['Airport / Railway Transfer','category:Airport / Railway Transfer'],
+        ['Corporate / Group Travel','category:Corporate / Group Travel'],
+        ['Khatu Shyam Ji & Salasar Balaji','category:Khatu Shyam Ji & Salasar Balaji'],
+        ['Jaipur City Tour','category:Jaipur City Tour'],
+        ['Jaipur - Udaipur Tour','category:Jaipur - Udaipur Tour'],
+        ['Jaipur - Jaisalmer Tour','category:Jaipur - Jaisalmer Tour'],
+        ['Rajasthan Special Tour','category:Rajasthan Special Tour']
+      ];
+      select.innerHTML = '<option value="" disabled>Select a vehicle or tour package</option>' + options +
+        services.map(item => `<option value="${escapeHtml(item[1])}">${escapeHtml(item[0])}</option>`).join('');
+      if ([...select.options].some(option => option.value === oldVal)) select.value = oldVal;
+
+      // Use an image fallback only if a third-party vehicle photo is blocked.
       grid.querySelectorAll('img[data-car-id]').forEach(img => {
         img.addEventListener('error', () => {
-          if (img.dataset.fallbackUsed === 'true') { img.style.display = 'none'; return; }
-          const car = cars.find(item => String(item.id) === img.dataset.carId);
-          if (car && /thar|off.?road|adventure/i.test(String(car.name || '') + ' ' + String(car.category || ''))) {
-            img.dataset.fallbackUsed = 'true';
-            img.src = 'https://images.unsplash.com/photo-1753806901556-3b7f216f0ca6?auto=format&fit=crop&w=800&q=80';
-          } else {
-            img.style.display = 'none';
+          img.style.display = 'none';
+          const box = img.closest('.fleet-image');
+          if (box && !box.querySelector('.photo-fallback')) {
+            const fallback = document.createElement('div');
+            fallback.className = 'photo-fallback absolute inset-0 flex items-center justify-center text-5xl text-[#0b559e] bg-blue-50';
+            fallback.innerHTML = '<i class="fa-solid fa-car-side"></i>';
+            box.appendChild(fallback);
           }
-        });
+        }, { once: true });
       });
-      const oldVal = select.value;
-      select.innerHTML = '<option value="" disabled>गाड़ी चुनें</option>' +
-        cars.map(car => `<option value="car:${escapeHtml(car.id)}" ${car.is_available ? '' : 'disabled'}>${escapeHtml(car.name)} — ₹${Number(car.price_per_day || 0).toLocaleString('en-IN')}/दिन${car.is_available ? '' : ' (उपलब्ध नहीं)'}</option>`).join('') +
-        '<option value="category:Jaipur Sightseeing">Jaipur Local Sightseeing</option><option value="category:Outstation Trip">Outstation Trip</option><option value="category:Airport Transfer">Airport / Railway Transfer</option>';
-      if ([...select.options].some(o => o.value === oldVal)) select.value = oldVal;
+      configureContactLinks();
     }
 
     function openBookingModalById(carId) { openBookingModal('car:' + carId); }
@@ -1017,22 +892,40 @@
       configureContactLinks();
       const warning = document.getElementById('setup-warning');
       if (!db) {
-        warning.textContent = 'सेटअप बाकी है: config.js में Supabase URL, Publishable Key और बिजनेस WhatsApp नंबर भरें। अभी दिख रही गाड़ियाँ नमूना डेटा हैं; फॉर्म डेटा सेव नहीं होगा।';
+        warning.textContent = 'Booking requests need the website database setup. The sample vehicle list is shown for browsing.';
         warning.classList.remove('hidden');
-        fleetCars = starterCars; renderFleet(fleetCars);
+        fleetCars = starterCars;
+        renderFleet(fleetCars);
         return;
       }
       try {
         const { data, error } = await db.from('cars').select('id,name,category,description,seats,transmission,luggage,price_per_day,image_url,is_available,display_order').order('display_order', { ascending: true });
         if (error) throw error;
-        fleetCars = data || [];
+        const savedCars = data || [];
+        fleetCars = starterCars.map(featured => {
+          const terms = featured.name.toLowerCase().replace(/\(available\)/g, '').trim().split(/\s+/);
+          const searchTerm = terms[terms.length - 1];
+          const match = savedCars.find(row => String(row.name || '').toLowerCase().includes(searchTerm));
+          return match ? {
+            ...featured,
+            ...match,
+            id: match.id,
+            name: featured.name,
+            category: featured.category,
+            description: featured.description,
+            seats: featured.seats,
+            transmission: featured.transmission,
+            image_url: match.image_url || featured.image_url,
+            is_available: match.is_available === undefined ? featured.is_available : match.is_available
+          } : featured;
+        });
         renderFleet(fleetCars);
-        if (!fleetCars.length) warning.textContent = 'एडमिन पैनल में गाड़ियों का डेटा जोड़ें, तब वेबसाइट पर गाड़ियाँ दिखाई देंगी।';
-        else warning.classList.add('hidden');
+        warning.classList.add('hidden');
       } catch (e) {
-        warning.textContent = 'गाड़ियों का डेटाबेस लोड नहीं हुआ: ' + friendlyError(e) + ' — नमूना गाड़ियाँ दिखाई जा रही हैं।';
-        warning.classList.remove('hidden');
-        fleetCars = starterCars; renderFleet(fleetCars);
+        warning.textContent = 'Vehicles are shown from the sample list because the saved vehicle list could not be loaded.';
+        warning.classList.add('hidden');
+        fleetCars = starterCars;
+        renderFleet(fleetCars);
       }
     }
     document.addEventListener('DOMContentLoaded', initializeWebsite);
