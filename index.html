@@ -896,7 +896,7 @@
         'Rating: ' + stars + ' (' + rating + '/5)',
         'Name: ' + name,
         'Feedback: ' + feedback
-      ].join('\\n');
+      ].join('\n');
       const url = createWhatsAppUrl(message);
       if (!url) {
         status.textContent = 'WhatsApp is not configured at the moment. Please call +91 95712 84521 to share your rating.';
