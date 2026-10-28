@@ -22,7 +22,7 @@
   </section>
   <section id="dashboard" class="hidden">
     <div class="panel row" style="justify-content:space-between"><div><b id="signed-in-as"></b><div class="muted">Manage vehicle photos, prices and availability here.</div></div><button id="logout-btn" class="secondary">Log Out</button></div>
-    <div class="tabs"><button class="tab active" data-tab="cars-panel">Vehicles</button><button class="tab" data-tab="bookings-panel">Bookings</button><button class="tab" data-tab="enquiries-panel">Travel Enquiries</button></div>
+    <div class="tabs"><button class="tab active" data-tab="cars-panel">Vehicles</button><button class="tab" data-tab="bookings-panel">Bookings</button><button class="tab" data-tab="enquiries-panel">Travel Enquiries</button><button class="tab" data-tab="reviews-panel">Customer Ratings</button></div>
     <section id="cars-panel" class="panel">
       <h2 id="car-form-title">Add a Vehicle</h2>
       <form id="car-form" class="grid">
@@ -44,6 +44,7 @@
     </section>
     <section id="bookings-panel" class="panel hidden"><h2>Booking Requests</h2><p class="muted">Customer details are visible only in this admin panel. Confirm availability and final fare by phone or WhatsApp.</p><div id="bookings-list" class="table-wrap"></div></section>
     <section id="enquiries-panel" class="panel hidden"><h2>Travel Enquiries</h2><div id="enquiries-list" class="table-wrap"></div></section>
+    <section id="reviews-panel" class="panel hidden"><h2>Customer Ratings</h2><p class="muted">Approve a rating to publish it on the website, or unpublish/delete it. New ratings wait here until you approve them.</p><div id="reviews-list" class="table-wrap"></div></section>
   </section>
 </main>
 <script>
@@ -88,8 +89,8 @@
   }
   restoreAdminSession();
   $('logout-btn').addEventListener('click',async()=>{if(client)await client.auth.signOut();currentUser=null;$('dashboard').classList.add('hidden');$('login-panel').classList.remove('hidden');message('You have logged out.');});
-  document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===btn));['cars-panel','bookings-panel','enquiries-panel'].forEach(id=>$(id).classList.toggle('hidden',id!==btn.dataset.tab));}));
-  async function refreshAll(){await Promise.all([loadCars(),loadBookings(),loadEnquiries()]);}
+  document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===btn));['cars-panel','bookings-panel','enquiries-panel','reviews-panel'].forEach(id=>$(id).classList.toggle('hidden',id!==btn.dataset.tab));}));
+  async function refreshAll(){await Promise.all([loadCars(),loadBookings(),loadEnquiries(),loadReviews()]);}
   async function loadCars(){const {data,error}=await client.from('cars').select('*').order('display_order');if(error)throw error;const rows=data||[];$('cars-list').innerHTML=rows.length?`<table><thead><tr><th>Photo</th><th>Vehicle</th><th>Price</th><th>Availability</th><th>Actions</th></tr></thead><tbody>${rows.map(c=>`<tr><td><img class="carimg" src="${esc(c.image_url)}" alt="${esc(c.name)}"></td><td><b>${esc(c.name)}</b><div class="muted">${esc(c.category)}</div></td><td>₹${Number(c.price_per_day).toLocaleString('en-IN')}/day</td><td>${c.is_available?'Available':'Unavailable'}</td><td><div class="row"><button class="secondary" data-edit-car="${esc(c.id)}">Edit</button><button class="danger" data-delete-car="${esc(c.id)}">Delete</button></div></td></tr>`).join('')}</tbody></table>` :'No vehicles yet. Add one using the form above.';}
   function clearCarForm(){ $('car-form').reset();$('car-id').value='';$('car-category').value='Tours & Travels';$('car-seats').value='5';$('car-transmission').value='Manual';$('car-order').value='1';$('car-available').value='true';$('car-form-title').textContent='Add a Vehicle';$('car-save-btn').textContent='Save Vehicle';$('car-image-file').value=''; }
   $('car-reset-btn').addEventListener('click',clearCarForm);
@@ -100,6 +101,36 @@
   $('bookings-list').addEventListener('change',async e=>{const s=e.target.closest('[data-booking-status]');if(!s)return;const {error}=await client.from('bookings').update({booking_status:s.value}).eq('id',s.dataset.bookingStatus);if(error)message(friendly(error),true);else message('Booking status updated.');});
   async function loadEnquiries(){const {data,error}=await client.from('enquiries').select('*').order('created_at',{ascending:false}).limit(200);if(error)throw error;const rows=data||[];$('enquiries-list').innerHTML=rows.length?`<table><thead><tr><th>Date</th><th>Name / Company</th><th>Phone</th><th>Duration</th><th>Requirements</th><th>Status</th></tr></thead><tbody>${rows.map(q=>`<tr><td>${esc(new Date(q.created_at).toLocaleString('en-IN'))}</td><td>${esc(q.name_or_company)}</td><td><a href="tel:${esc(q.phone)}">${esc(q.phone)}</a></td><td>${esc(q.duration)}</td><td>${esc(q.details)}</td><td><select data-enquiry-status="${esc(q.id)}"><option value="new" ${q.enquiry_status==='new'?'selected':''}>New</option><option value="contacted" ${q.enquiry_status==='contacted'?'selected':''}>Contacted</option><option value="closed" ${q.enquiry_status==='closed'?'selected':''}>Closed</option></select></td></tr>`).join('')}</tbody></table>` :'No enquiries yet.';}
   $('enquiries-list').addEventListener('change',async e=>{const s=e.target.closest('[data-enquiry-status]');if(!s)return;const {error}=await client.from('enquiries').update({enquiry_status:s.value}).eq('id',s.dataset.enquiryStatus);if(error)message(friendly(error),true);else message('Enquiry status updated.');});
+  async function loadReviews(){
+    const box=$('reviews-list');
+    const {data,error}=await client.from('customer_reviews').select('*').order('created_at',{ascending:false}).limit(300);
+    if(error){box.innerHTML='<p class="muted">Ratings database setup is not complete. Run the customer-reviews-setup.sql script in Supabase SQL Editor.</p>';return;}
+    const rows=data||[];
+    if(!rows.length){box.innerHTML='<p class="muted">No customer ratings yet.</p>';return;}
+    box.innerHTML=`<table><thead><tr><th>Date</th><th>Customer</th><th>Rating</th><th>Feedback</th><th>Status</th><th>Actions</th></tr></thead><tbody>${rows.map(r=>{
+      const rating=Math.max(1,Math.min(5,Number(r.rating)||1));
+      const stars='★'.repeat(rating)+'☆'.repeat(5-rating);
+      return `<tr><td>${esc(new Date(r.created_at).toLocaleString('en-IN'))}</td><td><b>${esc(r.customer_name)}</b></td><td style="color:#d97706;white-space:nowrap">${stars}</td><td style="white-space:normal;min-width:200px">${esc(r.feedback)}</td><td>${r.is_approved?'Published':'Pending approval'}</td><td><div class="row"><button class="secondary" data-review-toggle="${esc(r.id)}" data-next-approved="${r.is_approved?'false':'true'}">${r.is_approved?'Unpublish':'Approve'}</button><button class="danger" data-review-delete="${esc(r.id)}">Delete</button></div></td></tr>`;
+    }).join('')}</tbody></table>`;
+  }
+  $('reviews-list').addEventListener('click',async e=>{
+    const toggle=e.target.closest('[data-review-toggle]');
+    const remove=e.target.closest('[data-review-delete]');
+    if(toggle){
+      const approved=toggle.dataset.nextApproved==='true';
+      toggle.disabled=true;
+      const {error}=await client.from('customer_reviews').update({is_approved:approved}).eq('id',toggle.dataset.reviewToggle);
+      if(error){message(friendly(error),true);toggle.disabled=false;return;}
+      message(approved?'Customer rating published on the website.':'Customer rating unpublished.');
+      await loadReviews();
+    }else if(remove){
+      if(!confirm('Delete this customer rating permanently?'))return;
+      const {error}=await client.from('customer_reviews').delete().eq('id',remove.dataset.reviewDelete);
+      if(error){message(friendly(error),true);return;}
+      message('Customer rating deleted.');
+      await loadReviews();
+    }
+  });
   if(!ready){message('Setup incomplete: add the Supabase URL and Publishable Key in config.js.',true);$('login-form').querySelector('button').disabled=true;}
 })();
 </script>
