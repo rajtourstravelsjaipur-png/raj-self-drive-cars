@@ -140,6 +140,7 @@
       letter-spacing: -.025em;
     }
     .font-black, .font-extrabold { font-weight: 600 !important; }
+    .site-brand-name, #home .hero-brand-title { font-weight: 800 !important; letter-spacing: -.035em; }
     .font-bold { font-weight: 600 !important; }
     .font-semibold { font-weight: 500 !important; }
     .hindi-text { font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 500; }
@@ -251,7 +252,7 @@
       <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="Raj Tour and Travels home">
         <span class="w-14 h-12 sm:w-16 sm:h-14 rounded-xl bg-blue-50 text-[#0b559e] flex items-center justify-center text-3xl border border-blue-100"><i class="fa-solid fa-car-side"></i></span>
         <span class="flex flex-col">
-          <strong class="brand-heading font-extrabold text-xl sm:text-2xl leading-none text-[#0a3d73]">RAJ TOUR AND TRAVELS</strong>
+          <strong class="brand-heading site-brand-name text-xl sm:text-2xl leading-none text-[#0a3d73]">RAJ TOUR AND TRAVELS</strong>
           <span class="text-[10px] sm:text-xs font-bold text-[#0d5599] tracking-[.30em] text-center mt-1.5">— RAJASTHAN —</span>
         </span>
       </a>
@@ -292,7 +293,7 @@
     <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20 min-h-[390px] lg:min-h-[430px] grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div class="relative z-10 reveal-left">
         <div class="inline-flex items-center gap-2 text-[#0b559e] font-bold text-sm mb-4"><i class="fa-solid fa-shield-heart text-lg"></i> Welcome to</div>
-        <h1 class="brand-heading text-4xl sm:text-5xl lg:text-6xl font-black text-[#0a3768] leading-[.98] mb-3">RAJ TOUR AND TRAVELS <span class="block mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold">RAJASTHAN</span></h1>
+        <h1 class="brand-heading hero-brand-title text-4xl sm:text-5xl lg:text-6xl text-[#0a3768] leading-[.98] mb-3">RAJ TOUR AND TRAVELS <span class="block mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold">RAJASTHAN</span></h1>
         <div class="w-48 h-1 bg-[#0b559e] rounded-full mb-5"></div>
         <p class="hindi-text text-2xl sm:text-3xl font-extrabold text-[#0a3768] mb-4">आपकी यात्रा, हमारी जिम्मेदारी।</p>
         <p class="text-base sm:text-lg font-bold text-slate-700 mb-4">Jaipur's Trusted Taxi &amp; Tour Service</p>
@@ -459,10 +460,8 @@
   <section id="reviews" class="bg-white py-12 sm:py-16">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-8"><h2 class="section-heading text-3xl sm:text-4xl font-black">WHAT OUR CUSTOMERS SAY</h2></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“Very good service, neat and clean vehicles, driver behaviour also very polite. Highly recommended.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Rohit Sharma</p><p class="text-xs text-slate-400">Jaipur</p></div></article>
-        <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“Khatu Shyam Ji trip was awesome. On time pickup and comfortable journey.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Pooja Meena</p><p class="text-xs text-slate-400">Ajmer</p></div></article>
-        <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“We have been using Raj Tour and Travels for our corporate needs. Best service and professional team.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Sanjeev Choudhary</p><p class="text-xs text-slate-400">Jaipur</p></div></article>
+      <div id="published-customer-reviews" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="md:col-span-3 rounded-xl border border-blue-100 bg-[#f4f9ff] p-6 text-center text-sm text-slate-500">Customer ratings will appear here after the ratings setup is completed.</div>
       </div>
 
       <div class="max-w-3xl mx-auto mt-10 rounded-2xl border border-blue-100 bg-[#f4f9ff] p-5 sm:p-8 shadow-sm">
@@ -492,7 +491,7 @@
             <textarea id="customer-rating-feedback" name="customer_feedback" rows="3" required maxlength="1000" placeholder="Tell us about your journey..." class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"></textarea>
           </div>
           <button type="submit" class="w-full inline-flex justify-center items-center gap-2 bg-[#0b559e] hover:bg-[#073668] text-white font-semibold px-5 py-3 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-whatsapp text-lg"></i> Send Rating on WhatsApp</button>
-          <p class="text-xs text-center text-slate-500">WhatsApp will open with your rating and feedback. Press Send there to submit it to Raj Tour &amp; Travels.</p>
+          <p class="text-xs text-center text-slate-500">Your rating is saved for review. Approved customer ratings will appear here on the website.</p>
           <p id="customer-rating-status" class="hidden rounded-lg bg-blue-50 border border-blue-100 p-3 text-sm text-blue-800" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -503,7 +502,7 @@
   <footer id="contact" class="bg-[#05254a] text-white pt-12 pb-28 sm:pb-20 border-t-4 border-[#0b70bc] relative">
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9 mb-10 relative z-10">
       <div class="lg:col-span-2">
-        <div class="flex items-center gap-3 mb-4"><span class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl"><i class="fa-solid fa-car-side"></i></span><div><h3 class="brand-heading text-2xl font-black">RAJ TOUR AND TRAVELS</h3><p class="text-xs tracking-[.28em] text-blue-200">— RAJASTHAN —</p></div></div>
+        <div class="flex items-center gap-3 mb-4"><span class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl"><i class="fa-solid fa-car-side"></i></span><div><h3 class="brand-heading site-brand-name text-2xl">RAJ TOUR AND TRAVELS</h3><p class="text-xs tracking-[.28em] text-blue-200">— RAJASTHAN —</p></div></div>
         <p class="text-blue-100/80 text-sm leading-6 max-w-xl">Your trusted travel partner in Jaipur for local sightseeing, outstation trips, religious tours, airport and railway transfers, and corporate travel. A comfortable journey starts with us.</p>
         <div class="flex items-center gap-3 mt-5"><a href="https://www.instagram.com/rajtourandtravels09_?cplk=MWR2cnVnaHlhbnNyYw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-lg bg-white/10 hover:bg-blue-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a></div>
       </div>
@@ -856,12 +855,12 @@
     }
 
     function setCustomerRating(rating) {
-      const value = Math.max(1, Math.min(5, Number(rating) || 0));
+      const value = Math.max(0, Math.min(5, Number(rating) || 0));
       const hidden = document.getElementById('customer-rating-value');
       const label = document.getElementById('customer-rating-label');
       if (!hidden || !label) return;
       hidden.value = String(value);
-      label.textContent = value + ' out of 5 stars';
+      label.textContent = value ? value + ' out of 5 stars' : 'Select 1 to 5 stars';
       document.querySelectorAll('[data-rating-star]').forEach(button => {
         const selected = Number(button.dataset.ratingStar) <= value;
         button.classList.toggle('text-amber-400', selected);
@@ -870,10 +869,11 @@
       });
     }
 
-    function handleCustomerRatingSubmit(event) {
+    async function handleCustomerRatingSubmit(event) {
       event.preventDefault();
       const form = event.currentTarget;
       const status = document.getElementById('customer-rating-status');
+      const submitButton = form.querySelector('button[type="submit"]');
       const data = new FormData(form);
       const rating = Number(data.get('rating') || 0);
       if (rating < 1 || rating > 5) {
@@ -888,23 +888,69 @@
         status.classList.remove('hidden');
         return;
       }
-      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-      const message = [
-        'Customer Website Rating - Raj Tour & Travels',
-        '',
-        'Rating: ' + stars + ' (' + rating + '/5)',
-        'Name: ' + name,
-        'Feedback: ' + feedback
-      ].join('\n');
-      const url = createWhatsAppUrl(message);
-      if (!url) {
-        status.textContent = 'WhatsApp is not configured at the moment. Please call +91 95712 84521 to share your rating.';
+      if (!db) {
+        status.textContent = 'Website ratings need the database setup first. Please call +91 95712 84521 to share feedback for now.';
         status.classList.remove('hidden');
         return;
       }
-      window.open(url, '_blank', 'noopener');
-      status.textContent = 'Your rating message is ready in WhatsApp. Press Send in WhatsApp to submit it.';
-      status.classList.remove('hidden');
+      const oldText = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving rating...';
+      try {
+        const { error } = await db.from('customer_reviews').insert({
+          customer_name: name,
+          rating: rating,
+          feedback: feedback,
+          is_approved: false
+        });
+        if (error) throw error;
+        status.textContent = 'Thank you! Your rating has been saved. It will appear on the website after it is approved by Raj Tour & Travels.';
+        status.classList.remove('hidden');
+        form.reset();
+        setCustomerRating(0);
+      } catch (error) {
+        status.textContent = 'Your rating could not be saved yet. The website ratings database may need setup. Please try again later.';
+        status.classList.remove('hidden');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = oldText;
+      }
+    }
+
+    async function loadCustomerReviews() {
+      const target = document.getElementById('published-customer-reviews');
+      if (!target) return;
+      if (!db) {
+        target.innerHTML = '<div class="md:col-span-3 rounded-xl border border-blue-100 bg-[#f4f9ff] p-6 text-center text-sm text-slate-500">Customer ratings will appear here after the ratings database is set up.</div>';
+        return;
+      }
+      const { data, error } = await db.from('customer_reviews')
+        .select('id,customer_name,rating,feedback,created_at')
+        .eq('is_approved', true)
+        .order('created_at', { ascending: false })
+        .limit(6);
+      if (error) {
+        target.innerHTML = '<div class="md:col-span-3 rounded-xl border border-blue-100 bg-[#f4f9ff] p-6 text-center text-sm text-slate-500">Customer ratings are being set up. Please check back soon.</div>';
+        return;
+      }
+      const reviews = data || [];
+      if (!reviews.length) {
+        target.innerHTML = '<div class="md:col-span-3 rounded-xl border border-blue-100 bg-[#f4f9ff] p-6 text-center text-sm text-slate-500">No published customer ratings yet. Be the first to share your experience below.</div>';
+        return;
+      }
+      target.innerHTML = reviews.map(review => {
+        const rating = Math.max(1, Math.min(5, Number(review.rating) || 1));
+        const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+        const date = review.created_at ? new Date(review.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        return `<article class="rounded-xl border border-blue-100 bg-white shadow-sm p-5">
+          <div class="text-amber-400 text-xl tracking-wide" aria-label="${rating} out of 5 stars">${stars}</div>
+          <p class="text-sm text-slate-600 leading-6 mt-3 break-words">${escapeHtml(review.feedback)}</p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-start justify-between gap-3">
+            <p class="text-sm font-semibold text-[#0a3d73] break-words">${escapeHtml(review.customer_name)}</p>
+            <p class="text-xs text-slate-400 shrink-0">${escapeHtml(date)}</p>
+          </div>
+        </article>`;
+      }).join('');
     }
 
     const RAJ_CONFIG = window.RAJ_CONFIG || {};
@@ -1007,6 +1053,7 @@
 
     async function initializeWebsite() {
       configureContactLinks();
+      await loadCustomerReviews();
       const warning = document.getElementById('setup-warning');
       if (!db) {
         warning.textContent = 'Booking requests need the website database setup. The sample vehicle list is shown for browsing.';
