@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome for Icons -->
@@ -125,10 +125,24 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* New Raj Tour & Travels reference-inspired design */
+    /* Reference-inspired layout with more refined typography */
     html { scroll-behavior: smooth; }
-    body { background: #f3f8fd; color: #153456; }
-    h1, h2, h3, .brand-heading { font-family: 'Barlow Condensed', 'Inter', sans-serif; }
+    body {
+      background: #f3f8fd;
+      color: #243b53;
+      font-family: 'Manrope', 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    h1, h2, h3, .brand-heading {
+      font-family: 'Manrope', 'Inter', sans-serif;
+      font-weight: 600 !important;
+      letter-spacing: -.025em;
+    }
+    .font-black, .font-extrabold { font-weight: 600 !important; }
+    .font-bold { font-weight: 600 !important; }
+    .font-semibold { font-weight: 500 !important; }
+    .hindi-text { font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 500; }
     .hero-banner {
       position: relative;
       isolation: isolate;
@@ -148,20 +162,22 @@
       width: clamp(135px, 18vw, 245px);
       height: clamp(100px, 12vw, 156px);
       object-fit: contain;
-      border-radius: 16px;
-      padding: 4px;
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 16px 35px rgba(7,47,89,.16);
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 12px 9px rgba(8,35,60,.23));
     }
-    .section-heading { color: #0a3d73; font-family: 'Barlow Condensed', 'Inter', sans-serif; letter-spacing: .025em; }
+    .section-heading { color: #0a3d73; font-family: 'Manrope', 'Inter', sans-serif; font-weight: 600 !important; letter-spacing: -.02em; }
     .section-heading::after {
       content: "";
       display: block;
       width: 62px;
-      height: 4px;
+      height: 3px;
       margin: 11px auto 0;
       border-radius: 8px;
-      background: #f2b13c;
+      background: #eeb33e;
     }
     .service-tile { border-right: 1px solid #d4e2f0; }
     .service-tile:last-child { border-right: 0; }
@@ -181,12 +197,30 @@
     .footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .85rem; }
     .footer-links a { white-space: nowrap; }
     #floating-whatsapp { z-index: 50; }
+    @media (min-width: 768px) {
+      .hero-car-pair {
+        position: absolute;
+        right: -15px;
+        bottom: 7px;
+        width: 125%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        gap: 0;
+      }
+      .hero-car-pair img { width: clamp(230px, 27vw, 360px); height: clamp(160px, 21vw, 250px); }
+      .hero-car-pair img:first-child { position: relative; z-index: 1; transform: translateX(34px); }
+      .hero-car-pair img:last-child { width: clamp(215px, 25vw, 335px); margin-left: -38px; }
+      .hero-tagline { position: absolute; top: 7px; right: 4px; margin: 0 !important; z-index: 2; }
+      .hero-car-pair img { object-position: bottom center; }
+    }
     @media (max-width: 767px) {
       .hero-banner {
         background-image: linear-gradient(90deg, rgba(244,249,255,.96), rgba(244,249,255,.84)), url('https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg');
         background-position: 62% center;
       }
       .hero-car-pair img { width: 44vw; height: 104px; }
+      .hero-tagline { margin-top: .7rem !important; }
       .service-tile { border-right: 0; border-bottom: 1px solid #d4e2f0; padding-bottom: 14px; }
       .service-tile:nth-last-child(-n+2) { border-bottom: 0; }
       .footer-links { gap: .65rem; padding-right: 0; }
@@ -282,13 +316,13 @@
       <div class="relative z-10 flex flex-col justify-end items-center md:items-end min-h-[210px] md:min-h-[300px] reveal-right">
         <div class="hidden md:flex hero-car-pair items-end justify-center gap-3 w-full">
           <img src="https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg" alt="Maruti Suzuki Ertiga CNG" loading="lazy">
-          <img src="https://images.financialexpressdigital.com/2023/02/Hyundai-Aura-2.jpg" alt="Hyundai Aura" loading="lazy">
+          <img src="https://cdni.autocarindia.com/ExtraImages/20200121030918_hyundai-aura-titan-grey_12.jpg" alt="Hyundai Aura" loading="lazy">
         </div>
         <div class="md:hidden hero-car-pair flex items-end justify-center gap-2 w-full mt-2">
           <img src="https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg" alt="Maruti Suzuki Ertiga CNG" loading="lazy">
-          <img src="https://images.financialexpressdigital.com/2023/02/Hyundai-Aura-2.jpg" alt="Hyundai Aura" loading="lazy">
+          <img src="https://cdni.autocarindia.com/ExtraImages/20200121030918_hyundai-aura-titan-grey_12.jpg" alt="Hyundai Aura" loading="lazy">
         </div>
-        <div class="bg-white/90 backdrop-blur rounded-xl shadow-lg p-3 mt-4 text-center md:mr-5 border border-white/70">
+        <div class="hero-tagline bg-white/90 backdrop-blur rounded-xl shadow-lg p-3 mt-4 text-center md:mr-5 border border-white/70">
           <span class="text-[#0a3d73] font-black brand-heading text-xl">Explore Rajasthan With Us</span>
         </div>
       </div>
@@ -430,6 +464,38 @@
         <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“Very good service, neat and clean vehicles, driver behaviour also very polite. Highly recommended.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Rohit Sharma</p><p class="text-xs text-slate-400">Jaipur</p></div></article>
         <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“Khatu Shyam Ji trip was awesome. On time pickup and comfortable journey.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Pooja Meena</p><p class="text-xs text-slate-400">Ajmer</p></div></article>
         <article class="rounded-xl border border-slate-100 bg-white shadow-sm p-5 flex gap-3"><span class="shrink-0 w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-user"></i></span><div><p class="text-sm text-slate-600">“We have been using Raj Tour and Travels for our corporate needs. Best service and professional team.”</p><p class="text-sm font-bold text-[#0a3d73] mt-3">Sanjeev Choudhary</p><p class="text-xs text-slate-400">Jaipur</p></div></article>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-10 rounded-2xl border border-blue-100 bg-[#f4f9ff] p-5 sm:p-8 shadow-sm">
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 mx-auto rounded-full bg-white border border-blue-100 text-[#0b559e] flex items-center justify-center text-xl mb-3"><i class="fa-regular fa-star"></i></div>
+          <h3 class="text-2xl font-semibold text-[#103c6c]">Rate Your Experience</h3>
+          <p class="text-sm text-slate-600 mt-2">Your feedback helps us improve every journey.</p>
+        </div>
+        <form id="customer-rating-form" class="space-y-4" onsubmit="handleCustomerRatingSubmit(event)">
+          <input id="customer-rating-value" name="rating" type="hidden" value="0">
+          <div class="text-center">
+            <div role="radiogroup" aria-label="Choose a rating from one to five stars" class="flex justify-center gap-2 sm:gap-3">
+              <button type="button" data-rating-star="1" aria-label="1 star" aria-pressed="false" onclick="setCustomerRating(1)" class="text-4xl sm:text-5xl text-slate-300 hover:text-amber-400 transition-colors">★</button>
+              <button type="button" data-rating-star="2" aria-label="2 stars" aria-pressed="false" onclick="setCustomerRating(2)" class="text-4xl sm:text-5xl text-slate-300 hover:text-amber-400 transition-colors">★</button>
+              <button type="button" data-rating-star="3" aria-label="3 stars" aria-pressed="false" onclick="setCustomerRating(3)" class="text-4xl sm:text-5xl text-slate-300 hover:text-amber-400 transition-colors">★</button>
+              <button type="button" data-rating-star="4" aria-label="4 stars" aria-pressed="false" onclick="setCustomerRating(4)" class="text-4xl sm:text-5xl text-slate-300 hover:text-amber-400 transition-colors">★</button>
+              <button type="button" data-rating-star="5" aria-label="5 stars" aria-pressed="false" onclick="setCustomerRating(5)" class="text-4xl sm:text-5xl text-slate-300 hover:text-amber-400 transition-colors">★</button>
+            </div>
+            <p id="customer-rating-label" class="text-sm text-slate-500 mt-1" aria-live="polite">Select 1 to 5 stars</p>
+          </div>
+          <div>
+            <label for="customer-rating-name" class="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
+            <input id="customer-rating-name" name="customer_name" type="text" autocomplete="name" required maxlength="80" placeholder="Enter your name" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100">
+          </div>
+          <div>
+            <label for="customer-rating-feedback" class="block text-sm font-medium text-slate-700 mb-1">Your Feedback</label>
+            <textarea id="customer-rating-feedback" name="customer_feedback" rows="3" required maxlength="1000" placeholder="Tell us about your journey..." class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"></textarea>
+          </div>
+          <button type="submit" class="w-full inline-flex justify-center items-center gap-2 bg-[#0b559e] hover:bg-[#073668] text-white font-semibold px-5 py-3 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-whatsapp text-lg"></i> Send Rating on WhatsApp</button>
+          <p class="text-xs text-center text-slate-500">WhatsApp will open with your rating and feedback. Press Send there to submit it to Raj Tour &amp; Travels.</p>
+          <p id="customer-rating-status" class="hidden rounded-lg bg-blue-50 border border-blue-100 p-3 text-sm text-blue-800" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -790,6 +856,58 @@
       });
     }
 
+    function setCustomerRating(rating) {
+      const value = Math.max(1, Math.min(5, Number(rating) || 0));
+      const hidden = document.getElementById('customer-rating-value');
+      const label = document.getElementById('customer-rating-label');
+      if (!hidden || !label) return;
+      hidden.value = String(value);
+      label.textContent = value + ' out of 5 stars';
+      document.querySelectorAll('[data-rating-star]').forEach(button => {
+        const selected = Number(button.dataset.ratingStar) <= value;
+        button.classList.toggle('text-amber-400', selected);
+        button.classList.toggle('text-slate-300', !selected);
+        button.setAttribute('aria-pressed', String(Number(button.dataset.ratingStar) === value));
+      });
+    }
+
+    function handleCustomerRatingSubmit(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const status = document.getElementById('customer-rating-status');
+      const data = new FormData(form);
+      const rating = Number(data.get('rating') || 0);
+      if (rating < 1 || rating > 5) {
+        status.textContent = 'Please select a star rating first.';
+        status.classList.remove('hidden');
+        return;
+      }
+      const name = String(data.get('customer_name') || '').trim();
+      const feedback = String(data.get('customer_feedback') || '').trim();
+      if (!name || !feedback) {
+        status.textContent = 'Please add your name and feedback before submitting.';
+        status.classList.remove('hidden');
+        return;
+      }
+      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const message = [
+        'Customer Website Rating - Raj Tour & Travels',
+        '',
+        'Rating: ' + stars + ' (' + rating + '/5)',
+        'Name: ' + name,
+        'Feedback: ' + feedback
+      ].join('\\n');
+      const url = createWhatsAppUrl(message);
+      if (!url) {
+        status.textContent = 'WhatsApp is not configured at the moment. Please call +91 95712 84521 to share your rating.';
+        status.classList.remove('hidden');
+        return;
+      }
+      window.open(url, '_blank', 'noopener');
+      status.textContent = 'Your rating message is ready in WhatsApp. Press Send in WhatsApp to submit it.';
+      status.classList.remove('hidden');
+    }
+
     const RAJ_CONFIG = window.RAJ_CONFIG || {};
     const supabaseConfigured = Boolean(window.supabase && RAJ_CONFIG.SUPABASE_URL &&
       /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(RAJ_CONFIG.SUPABASE_URL) &&
@@ -799,7 +917,7 @@
 
     const starterCars = [
       { id: 'demo-ertiga', name: 'Maruti Suzuki Ertiga CNG', category: 'Family Trip • Outstation • Religious Tour', description: '6 + 1 Seater  |  Manual', seats: '6 + 1 Seater', transmission: 'Manual', luggage: 'Family Trip / Outstation / Religious Tour', price_per_day: 0, image_url: 'https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg', is_available: true, display_order: 1 },
-      { id: 'demo-aura', name: 'Hyundai Aura', category: 'Airport • Local • Outstation', description: '5 + 1 Seater  |  Manual', seats: '5 + 1 Seater', transmission: 'Manual', luggage: 'Airport / Local / Outstation', price_per_day: 0, image_url: 'https://images.financialexpressdigital.com/2023/02/Hyundai-Aura-2.jpg', is_available: true, display_order: 2 },
+      { id: 'demo-aura', name: 'Hyundai Aura', category: 'Airport • Local • Outstation', description: '5 + 1 Seater  |  Manual', seats: '5 + 1 Seater', transmission: 'Manual', luggage: 'Airport / Local / Outstation', price_per_day: 0, image_url: 'https://cdni.autocarindia.com/ExtraImages/20200121030918_hyundai-aura-titan-grey_12.jpg', is_available: true, display_order: 2 },
       { id: 'demo-innova', name: 'Toyota Innova (Available)', category: 'Family Trip • Corporate • Tour Packages', description: '7 + 1 Seater  |  Manual / Automatic', seats: '7 + 1 Seater', transmission: 'Manual / Automatic', luggage: 'Family Trip / Corporate / Tour Packages', price_per_day: 0, image_url: 'https://images.unsplash.com/photo-1748215210939-ad8b6c8c086d?auto=format&fit=crop&w=900&q=85', is_available: true, display_order: 3 }
     ];
 
