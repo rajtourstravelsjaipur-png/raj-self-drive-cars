@@ -488,7 +488,7 @@
             <label for="customer-rating-feedback" class="block text-sm font-medium text-slate-700 mb-1">Your Feedback</label>
             <textarea id="customer-rating-feedback" name="customer_feedback" rows="3" required maxlength="1000" placeholder="Tell us about your journey..." class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"></textarea>
           </div>
-          <button type="submit" class="w-full inline-flex justify-center items-center gap-2 bg-[#0b559e] hover:bg-[#073668] text-white font-semibold px-5 py-3 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-whatsapp text-lg"></i> Send Rating on WhatsApp</button>
+          <button type="submit" class="w-full inline-flex justify-center items-center gap-2 bg-[#0b559e] hover:bg-[#073668] text-white font-semibold px-5 py-3 rounded-lg shadow-sm transition-all"><i class="fa-regular fa-paper-plane text-lg"></i> Submit Rating</button>
           <p class="text-xs text-center text-slate-500">Your rating is saved for review. Approved customer ratings will appear here on the website.</p>
           <p id="customer-rating-status" class="hidden rounded-lg bg-blue-50 border border-blue-100 p-3 text-sm text-blue-800" role="status" aria-live="polite"></p>
         </form>
@@ -522,7 +522,7 @@
     <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-100/70 text-xs relative z-10">
       <p>&copy; 2026 Raj Tour and Travels - Rajasthan. All rights reserved.</p>
       <div class="footer-links text-xs font-semibold relative z-[60]">
-        <a href="/admin.html" class="text-amber-300 hover:text-white underline underline-offset-4">Admin Login</a>
+        <a href="/admin-panel.html?v=20261028" class="text-amber-300 hover:text-white underline underline-offset-4">Admin Login</a>
         <span class="w-1 h-1 rounded-full bg-blue-300"></span>
         <a href="#" class="hover:text-white">Privacy Policy</a>
         <span class="w-1 h-1 rounded-full bg-blue-300"></span>
@@ -1089,26 +1089,13 @@
         return;
       }
       try {
-        const { data, error } = await db.from('cars').select('id,name,category,description,seats,transmission,luggage,price_per_day,image_url,is_available,display_order').order('display_order', { ascending: true });
+        const { data, error } = await db.from('cars')
+          .select('id,name,category,description,seats,transmission,luggage,price_per_day,image_url,is_available,display_order')
+          .order('display_order', { ascending: true });
         if (error) throw error;
+        // Show the real saved fleet, so admin edits to vehicle names and photos appear on the homepage.
         const savedCars = data || [];
-        fleetCars = starterCars.map(featured => {
-          const terms = featured.name.toLowerCase().replace(/\(available\)/g, '').trim().split(/\s+/);
-          const searchTerm = terms[terms.length - 1];
-          const match = savedCars.find(row => String(row.name || '').toLowerCase().includes(searchTerm));
-          return match ? {
-            ...featured,
-            ...match,
-            id: match.id,
-            name: featured.name,
-            category: featured.category,
-            description: featured.description,
-            seats: featured.seats,
-            transmission: featured.transmission,
-            image_url: match.image_url || featured.image_url,
-            is_available: match.is_available === undefined ? featured.is_available : match.is_available
-          } : featured;
-        });
+        fleetCars = savedCars.length ? savedCars : starterCars;
         renderFleet(fleetCars);
         warning.classList.add('hidden');
       } catch (e) {
