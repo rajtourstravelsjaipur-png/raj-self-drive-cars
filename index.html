@@ -147,9 +147,17 @@
     .hero-banner {
       position: relative;
       isolation: isolate;
-      background-image: linear-gradient(90deg, rgba(244,249,255,.98) 0%, rgba(244,249,255,.94) 38%, rgba(244,249,255,.52) 60%, rgba(244,249,255,.06) 100%), url('https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg');
-      background-position: center 42%;
+      background-color: #f4f9ff;
+      background-image: linear-gradient(90deg, rgba(244,249,255,.98) 0%, rgba(244,249,255,.94) 38%, rgba(244,249,255,.52) 60%, rgba(244,249,255,.06) 100%);
+      background-position: center center;
       background-size: cover;
+    }
+    .hero-mobile-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 14px 32px rgba(7,47,89,.16);
     }
     .hero-banner::after {
       content: "";
@@ -216,8 +224,8 @@
     }
     @media (max-width: 767px) {
       .hero-banner {
-        background-image: linear-gradient(90deg, rgba(244,249,255,.96), rgba(244,249,255,.84)), url('https://cdn.audleytravel.com/752/536/55/1328401-hawa-mahal-jaipur.jpg');
-        background-position: 62% center;
+        background-image: linear-gradient(180deg, #f4f9ff, #f4f9ff);
+        background-position: center center;
       }
       .hero-car-pair img { width: 44vw; height: 104px; }
       .hero-tagline { margin-top: .7rem !important; }
@@ -291,7 +299,7 @@
   <!-- Home hero -->
   <section id="home" class="hero-banner overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20 min-h-[390px] lg:min-h-[430px] grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <div class="relative z-10 reveal-left">
+      <div class="relative z-10 reveal-left md:col-span-2 max-w-2xl">
         <div class="inline-flex items-center gap-2 text-[#0b559e] font-bold text-sm mb-4"><i class="fa-solid fa-shield-heart text-lg"></i> Welcome to</div>
         <h1 class="brand-heading hero-brand-title text-4xl sm:text-5xl lg:text-6xl text-[#0a3768] leading-[.98] mb-3">RAJ TOUR AND TRAVELS <span class="block mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold">JAIPUR</span></h1>
         <div class="w-48 h-1 bg-[#0b559e] rounded-full mb-5"></div>
@@ -313,18 +321,8 @@
           </a>
         </div>
       </div>
-      <div class="relative z-10 flex flex-col justify-end items-center md:items-end min-h-[210px] md:min-h-[300px] reveal-right">
-        <div class="hidden md:flex hero-car-pair items-end justify-center gap-3 w-full">
-          <img src="https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg" alt="Maruti Suzuki Ertiga CNG" loading="lazy">
-          <img src="https://cdni.autocarindia.com/ExtraImages/20200121030918_hyundai-aura-titan-grey_12.jpg" alt="Hyundai Aura" loading="lazy">
-        </div>
-        <div class="md:hidden hero-car-pair flex items-end justify-center gap-2 w-full mt-2">
-          <img src="https://images10.gaadi.com/usedcar_image/UP1A.231005.007_IN/original/b13f4006-f859-49cf-9736-dc3fd25c4781.jpg" alt="Maruti Suzuki Ertiga CNG" loading="lazy">
-          <img src="https://cdni.autocarindia.com/ExtraImages/20200121030918_hyundai-aura-titan-grey_12.jpg" alt="Hyundai Aura" loading="lazy">
-        </div>
-        <div class="hero-tagline bg-white/90 backdrop-blur rounded-xl shadow-lg p-3 mt-4 text-center md:mr-5 border border-white/70">
-          <span class="text-[#0a3d73] font-black brand-heading text-xl">Explore Rajasthan With Us</span>
-        </div>
+      <div class="hero-mobile-photo md:hidden relative z-10 mt-2 reveal-right">
+        <img id="hero-banner-mobile-image" src="" alt="Jaipur Hawa Mahal, the road and Raj Tour and Travels cars" width="1024" height="332" loading="eager" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -1051,8 +1049,36 @@
       setTimeout(() => { bookingOverlay.classList.remove('opacity-0'); bookingContent.classList.remove('scale-95'); bookingContent.classList.add('scale-100'); }, 10);
     };
 
+    async function applyHomeBanner() {
+      const hero = document.querySelector('.hero-banner');
+      const mobileImage = document.getElementById('hero-banner-mobile-image');
+      if (!hero || !mobileImage) return;
+      try {
+        const response = await fetch('assets/jaipur-home-banner.b64', { cache: 'force-cache' });
+        if (!response.ok) throw new Error('Banner image file could not be loaded');
+        const base64 = (await response.text()).trim();
+        if (base64.length < 50000 || !base64.startsWith('UklGR')) throw new Error('Banner image file is incomplete');
+        const dataUrl = 'data:image/webp;base64,' + base64;
+        mobileImage.src = dataUrl;
+        const applyLayout = () => {
+          if (window.matchMedia('(min-width: 768px)').matches) {
+            hero.style.backgroundImage = 'linear-gradient(90deg, rgba(244,249,255,.97) 0%, rgba(244,249,255,.90) 35%, rgba(244,249,255,.35) 49%, rgba(244,249,255,.02) 68%), url("' + dataUrl + '")';
+            hero.style.backgroundPosition = 'center center';
+            hero.style.backgroundSize = 'cover';
+          } else {
+            hero.style.backgroundImage = 'linear-gradient(180deg, #f4f9ff, #f4f9ff)';
+          }
+        };
+        applyLayout();
+        window.addEventListener('resize', applyLayout, { passive: true });
+      } catch (error) {
+        console.warn('Home banner image could not be applied.', error);
+      }
+    }
+
     async function initializeWebsite() {
       configureContactLinks();
+      await applyHomeBanner();
       await loadCustomerReviews();
       const warning = document.getElementById('setup-warning');
       if (!db) {
